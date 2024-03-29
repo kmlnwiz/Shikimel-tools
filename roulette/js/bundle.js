@@ -11,13 +11,13 @@ function stopRoulette() {
     //要素を減らしていく
     if (isEleReduce) {
         if (rouletteArr[currentElement]['attr']) {
-            hitRate--;
+            remainHit--;
         };
         rouletteArr.splice(currentElement, 1);
     };
 
-    $('#remain-display').html(rouletteArr.length);
-    $('#remain-hit-display').html(hitRate);
+    $('#remain-display').html(`${rouletteArr.length}/100`);
+    $('#remain-hit-display').html(`${remainHit}/${hitRate}`);
 
     $('#startRoulette').removeClass('d-none').prop('disabled', false); // Start ボタンを表示して有効化する
     $('#stopRoulette').addClass('d-none');
@@ -64,6 +64,7 @@ function resetRoulette() {
     $(document).off("keydown", spaceEventListener);
 
     hitRate = Number($('#hit-rate').val());
+    remainHit = hitRate;
 
     trueArr = [...Array(hitRate)].map((_, i) => ({
         no: i + 1,
@@ -79,8 +80,8 @@ function resetRoulette() {
 
     isEleReduce = $('#ele-reduce').prop('checked');
 
-    $('#remain-display').html(rouletteArr.length);
-    $('#remain-hit-display').html(hitRate);
+    $('#remain-display').html(`${rouletteArr.length}/100`);
+    $('#remain-hit-display').html(`${remainHit}/${hitRate}`);
 
     // Space キーのイベントリスナーを再登録する
     $(document).keydown(spaceEventListener);
