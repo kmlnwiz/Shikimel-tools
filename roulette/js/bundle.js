@@ -1,5 +1,5 @@
 function startRoulette() {
-    intervalId = setInterval(rotateElement, 1);
+    intervalId = setInterval(rotateElement, 0.7);
 
     $('#startRoulette').addClass('d-none').prop('disabled', true); // Start ボタンを非表示にして無効化する
     $('#stopRoulette').removeClass('d-none');
