@@ -8,7 +8,7 @@
     <meta name="robots" content="noindex">
     <meta http-equiv="Cache-Control" content="no-cache">
     <link rel="apple-touch-icon" href="https://i-cf.quiz.colopl.jp/img/card/small/card_05265_0.png">
-    <title>Roulette</title>
+    <title>Bingo Roulette</title>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../css/bootstrap.css" crossorigin="anonymous">
     <link rel="stylesheet" href="../css/style.css" />
@@ -76,59 +76,91 @@
         </a>
     </nav>
     <main class="flex-shrink-0">
-        <div id="" class="container my-3" style="max-width:800px;">
+        <div id="" class="container" style="max-width:1400px;">
 
             <div id="overlay">
-                <div class="text-center text-indigo" id="overlay-spinner">
+                <div class="text-center text-primary" id="overlay-spinner">
                     <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
                     </div>
                     <p class="h3 fw-bold">通信中…</p>
                 </div>
             </div>
 
-            <span class="border-bottom h1 d-block mb-2 fw-bold touch-none">ルーレット</span>
-
+            <div class="row g-1 mt-3">
+                <div class="col pe-1">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">最小値</span>
+                        <input type="number" class="form-control" id="min-number" min="0" value="1">
+                    </div>
+                </div>
+                <div class="col ps-1">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">最大値</span>
+                        <input type="number" class="form-control" id="max-number" min="0" value="50">
+                    </div>
+                </div>
+            </div>
             <div class="row g-1">
-                <div class="col-12 col-md-6 pe-1">
-                    <div class="input-group mb-1">
-                        <span class="input-group-text touch-none">アタリ確率（％）</span>
-                        <input type="number" class="form-control" id="hit-rate" min="0" value="2" max="100">
+                <div class="col pe-1">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">重複回数</span>
+                        <input type="number" class="form-control" id="same-number" min="0" value="1">
                     </div>
                 </div>
-                <div class="col-12 col-md-6 pe-1">
-                    <div class="mb-1">
-                        <input type="checkbox" class="btn-check" id="ele-reduce" autocomplete="off">
-                        <label class="btn btn-outline-secondary w-100" for="ele-reduce">要素を減らしていく</label>
-                    </div>
+                <div class="col ps-1">
+                    <!--<div class="input-group mb-3">
+                        <span class="input-group-text">アタリ</span>
+                        <input type="number" class="form-control" id="lucky-number" min="0" value="">
+                    </div>-->
                 </div>
             </div>
 
-            <div class="text-center my-3">
-                <button class="btn btn-lg btn-indigo w-75" onClick="resetRoulette()">設定を適用する</button>
+            <div class="alert alert-primary" role="alert">
+                Spaceキー：ルーレットのスタート、ストップ<br>
+                Enterキー：全画面表示
             </div>
 
-            <hr>
-
-            <div id="Content" class="py-2 my-3 px-2">
+            <div id="Content" class="bg-light rounded py-2 my-3 px-2">
                 <div class="row g-0">
-
-                    <div class="col-12 mt-3">
-                        <div class="roulette">
-                            <div class="element-display fw-bold text-center my-5 touch-none slot" id="current-element" style="font-size: 4em;"><div class="alert alert-light border rounded-5"><div style="font-size:0.5em!important;">No.000<br></div><span class="">始める</span></div></div>
-                            <button id="startRoulette" class="btn btn-lg btn-indigo w-75 d-block mx-auto py-3 d-inline-block mb-1" onClick="startRoulette()">スタート</button>
+                    <span class="border-bottom h1 d-block mb-2 fw-bold touch-none">ビンゴルーレット</span>
+                    <div class="col-12 col-md-5 mt-3">
+                        <div class="already-called row row-cols-lg-5 g-2" id="called-numbers"></div>
+                    </div>
+                    <div class="col-12 col-md-7 mt-3">
+                        <div class="bingo-roulette">
+                            <p class="h1 text-center fw-bold touch-none">現在の数字は</p>
+                            <div class="number-display fw-bold text-center my-5 touch-none" id="current-number" style="font-size: 24em;">00</div>
+                            <button id="startRoulette" class="btn btn-lg btn-primary w-75 d-block mx-auto py-3 d-inline-block mb-1" onClick="startRoulette()">スタート</button>
                             <button id="stopRoulette" class="btn btn-lg btn-danger w-75 d-block mx-auto py-3 d-inline-block mb-1 d-none" onClick="stopRoulette()">ストップ</button>
+                            <button id="stopRoulette" class="btn btn-lg btn-secondary w-75 d-block mx-auto py-3 d-inline-block my-3" onClick="resetRoulette()">リセット</button>
 
-                            <div class="w-75 my-3 py-2 mx-auto row touch-none">
+                            <div class="w-75 row-cols-2 my-3 py-2 mx-auto border-top row">
                                 <ul class="list-group list-group-flush col">
-                                    <li class="list-group-item">残り要素数：<span id="remain-display"></span></li>
-                                    <li class="list-group-item">残アタリ数：<span id="remain-hit-display"></span></li>
+                                    <li class="list-group-item bg-light h3">最小値　：<span class="min-display"></span></li>
+                                    <li class="list-group-item bg-light h3">最大値　：<span class="max-display"></span></li>
+                                    <li class="list-group-item bg-light h3">重複回数：<span class="same-display"></span></li>
+                                </ul>
+                                <ul class="list-group list-group-flush col">
+                                    <li class="list-group-item bg-light h3">既出数：<span class="already-display">00</span></li>
+                                    <li class="list-group-item bg-light h3">残数　：<span class="remain-display">00</span></li>
+                                </ul>
                             </div>
 
+                            <!--<div class="alert alert-primary w-75 mx-auto" role="alert">
+                                スタート、ストップはspaceキーでも動作します。
+                            </div>-->
                         </div>
                     </div>
 
                 </div>
 
+                <span>
+                    <nav class="navbar sticky-bottom border-top border-bottom-0 bg-light" style="margin-left: -0.5rem; margin-right: -0.5rem;">
+                        <div class="container-fluid">
+                            <small>@ShikimeQuiz</small>
+                        </div>
+                    </nav>
+                </span>
             </div>
 
             <div class="page m-2 mb-5 btn-group position-fixed bottom-0 end-0 rounded-1 bg-white" role="group" aria-label="Basic outlined example">
@@ -149,7 +181,7 @@
 
     <footer class="footer mt-auto py-4 bg-light touch-none">
         <div class="container-fluid">
-            ©2020-2024 Shikimel tools
+            ©2020-2024 Quiz Storage @ShikimelQuiz
         </div>
     </footer>
 </body>
