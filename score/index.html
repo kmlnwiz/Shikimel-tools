@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="content-language" content="ja">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <link rel="apple-touch-icon" href="https://suahl.com/wp-content/uploads/2023/01/osaka-min-1024x576.png">
+    <title>Score</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../css/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.1/font/bootstrap-icons.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/bundle.js"></script>
+    <script src="../js/tool.js"></script>
+    <style>
+        .player-card {
+            margin-bottom: 10px;
+        }
+    </style>
+    <script>
+        document.addEventListener("dblclick", function (e) {
+            e.preventDefault();
+        }, {
+            passive: false
+        });
+    </script>
+    <script>
+        $(function () {
+            //スクロール
+            $('#pagetop').click(function () {
+                //id名#pagetopがクリックされたら、以下の処理を実行
+                $("html,body").animate({
+                    scrollTop: 0
+                }, 0, 200);
+            });
+            $('#pagebottom').click(function () {
+                //id名#pagetopがクリックされたら、以下の処理を実行
+                $("html,body").animate({
+                    scrollTop: $(document).height()
+                }, 0, 200);
+            });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var h = $(window).height();
+
+            $('#wrap').css('display', 'none');
+            $('#loader-bg ,#loader-light,#loader-dark').height(h).css('display', 'block');
+        });
+
+        $(window).load(function () { //全ての読み込みが完了したら実行
+            $('#loader-bg').delay(200).fadeOut(200);
+            $('#loader-light', '#loader-dark').delay(200).fadeOut(200);
+            $('#wrap').css('display', 'block');
+        });
+    </script>
+</head>
+<body class="d-flex flex-column touch-none">
+    <div id="loader-bg">
+        <div id="loader-light">
+            <img src="../img/loading-light.gif" width="80" height="80" alt="Now Loading..." />
+            <p>Now Loading...</p>
+        </div>
+        <!--div id="loader-dark">
+            <img src="../img/loading-dark.gif" width="80" height="80" alt="Now Loading..." />
+            <p>Now Loading...</p>
+        </div>-->
+    </div>
+    <nav class="navbar navbar-light bg-light touch-none">
+        <a href="../" class="top-link navbar-brand mb-0 px-3 h1 py-1">
+            <i class="bi bi-house-door-fill"></i>
+            ShikimelTools
+        </a>
+    </nav>
+    <main class="flex-shrink-0">
+        <div class="container-fluid">
+            <h1 class="mt-5 mb-4 border-bottom">クイズ得点表示板</h1>
+
+            <div class="alert alert-primary" role="alert">
+                Enterキー：全画面表示<br>
+                現在は+m/-nにのみ対応しています。
+            </div>
+
+            <div id="contentArea" class="bg-light rounded py-2 px-3 mb-3">
+                <div class="row">
+                    <div class="col-md-6 my-2 px-1">
+                        <button id="addPlayerBtn" class="btn btn-lg btn-primary mb-3">プレイヤーを追加</button>
+                        <button id="undoBtn" class="btn btn-lg btn-secondary mb-3">1つ前に戻る</button>
+                        <button id="resetBtn" class="btn btn-lg btn-danger mb-3">リセット</button>
+                    </div>
+                </div>
+                <div id="playerList" class="row row-cols-10"></div>
+                <div class="row row-cols-5 mt-4">
+                </div>
+            </div>
+        </div>
+        <footer class="footer mt-auto py-4 bg-light touch-none">
+            <div class="container-fluid">
+                ©2024 ShikimelTools @ShikimelQuiz
+            </div>
+        </footer>
+    </main>
+</body>
+</html>
