@@ -40,15 +40,18 @@ function addPlayer() {
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-4 px-0 ps-1">
-                                <button class="btn btn-outline-primary w-100 win-player"><i class="bi bi-trophy"></i></button>
+                            <div class="col-4 px-0 ps-1 text-center">
+                                <input type="checkbox" class="btn-check form-check-input win-player" id="win-player-checkbox-${playerId}">
+                                <label class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center" for="win-player-checkbox-${playerId}"><i class="bi bi-trophy"></i></label>
                             </div>
-                            <div class="col-4 px-1">
-                            <button class="btn btn-outline-danger w-100 lose-player"><i class="bi bi-emoji-dizzy"></i></button>
+                            <div class="col-4 px-1 text-center">
+                                <input type="checkbox" class="btn-check form-check-input lose-player" id="lose-player-checkbox-${playerId}">
+                                <label class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center" for="lose-player-checkbox-${playerId}"><i class="bi bi-heartbreak"></i></label>
                             </div>
-                            <div class="col-4 px-0 pe-1">
-                            <button class="btn btn-outline-warning w-100 delete-player"><i class="bi bi-trash"></i></button>
+                            <div class="col-4 px-0 pe-1 text-center">
+                                <button class="btn btn-outline-warning w-100 delete-player"><i class="bi bi-trash"></i></button>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -167,6 +170,32 @@ $(document).ready(function () {
 
     $('#toggleMode').change(function () {
         mode = this.checked ? "difference" : "simple";
+    });
+
+
+    $(document).ready(function () {
+        //
+        $('#playerList').on('click', '.win-player', function () {
+            const playerId = $(this).closest('.player-card').attr('id');
+            if ($(this).prop('checked')) {
+                $(this).closest('.player-card').find('.card').addClass('border-primary border bg-primary bg-opacity-25');
+                $(this).closest('.player-card').find('.card').append('<div class="win-message text-center fw-bold h1 text-primary w-100 position-absolute border-top border-bottom border-primary bg-white top-50 py-1">勝</div>');
+            } else {
+                $(this).closest('.player-card').find('.card').removeClass('border-primary border-danger border bg-primary bg-danger bg-opacity-25');
+                $(this).closest('.player-card').find('.win-message').remove();
+            };
+        });
+
+        $('#playerList').on('click', '.lose-player', function () {
+            const playerId = $(this).closest('.player-card').attr('id');
+            if ($(this).prop('checked')) {
+                $(this).closest('.player-card').find('.card').addClass('border-danger border bg-danger bg-opacity-25');
+                $(this).closest('.player-card').find('.card').append('<div class="lose-message text-center fw-bold h1 text-danger w-100 position-absolute border-top border-bottom border-danger bg-white top-50 py-1">負</div>');
+            } else {
+                $(this).closest('.player-card').find('.card').removeClass('border-primary border-danger border bg-primary bg-danger bg-opacity-25');
+                $(this).closest('.player-card').find('.lose-message').remove();
+            };
+        });
     });
 
 

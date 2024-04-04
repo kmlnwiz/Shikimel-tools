@@ -88,6 +88,10 @@
 
             <span class="border-bottom h1 d-block mb-2 fw-bold touch-none">ルーレット</span>
 
+            <div class="alert alert-indigo my-3" role="alert">
+                Spaceキー：ルーレットのスタート、ストップ
+            </div>
+
             <div class="row g-1">
                 <div class="col-12 col-md-6 pe-1">
                     <div class="input-group mb-1">
@@ -114,7 +118,11 @@
 
                     <div class="col-12 mt-3">
                         <div class="roulette">
-                            <div class="element-display fw-bold text-center my-5 touch-none slot" id="current-element" style="font-size: 4em;"><div class="alert alert-light border rounded-5"><div style="font-size:0.5em!important;">No.000<br></div><span class="">始める</span></div></div>
+                            <div class="element-display fw-bold text-center my-5 touch-none slot" id="current-element" style="font-size: 4em;">
+                                <div class="alert alert-light border rounded-5">
+                                    <div style="font-size:0.5em!important;">No.000<br></div><span class="">始める</span>
+                                </div>
+                            </div>
                             <button id="startRoulette" class="btn btn-lg btn-indigo w-75 d-block mx-auto py-3 d-inline-block mb-1" onClick="startRoulette()">スタート</button>
                             <button id="stopRoulette" class="btn btn-lg btn-danger w-75 d-block mx-auto py-3 d-inline-block mb-1 d-none" onClick="stopRoulette()">ストップ</button>
 
