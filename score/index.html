@@ -88,10 +88,24 @@
 
             <div id="contentArea" class="bg-light rounded py-2 px-3 mb-3">
                 <div class="row">
-                    <div class="col-md-6 my-2 px-1">
+                    <div class="col-md-4 my-2 px-1">
                         <button id="addPlayerBtn" class="btn btn-lg btn-indigo mb-3">プレイヤーを追加</button>
                         <button id="undoBtn" class="btn btn-lg btn-secondary mb-3">1つ前に戻る</button>
                         <button id="resetBtn" class="btn btn-lg btn-danger mb-3">リセット</button>
+                    </div>
+                    <div class="col-md-8 my-2 px-1">
+                        <div class="btn-group">
+                        <input type="radio" class="btn-check" name="options-rule" id="option1" autocomplete="off" onClick="toggleRule(1)" checked>
+                        <label class="btn btn-lg btn-outline-indigo" for="option1">Simple</label>
+                        <input type="radio" class="btn-check" name="options-rule" id="option2" autocomplete="off" onClick="toggleRule(2)">
+                        <label class="btn btn-lg btn-outline-indigo" for="option2">+M / -N</label>
+                        <!--<input type="radio" class="btn-check" name="options-rule" id="option3" autocomplete="off" onClick="toggleRule(3)">
+                        <label class="btn btn-lg btn-outline-indigo" for="option3">Up-Down</label>-->
+                        <input type="radio" class="btn-check" name="options-rule" id="option4" autocomplete="off" onClick="toggleRule(4)">
+                        <label class="btn btn-lg btn-outline-indigo" for="option4">M by 10</label>
+                        <!--<input type="radio" class="btn-check" name="options-rule" id="option5" autocomplete="off" onClick="toggleRule(5)">
+                        <label class="btn btn-lg btn-outline-indigo" for="option5">Divide</label>-->
+                        </div>
                     </div>
                 </div>
                 <div id="playerList" class="row row-cols-10"></div>
