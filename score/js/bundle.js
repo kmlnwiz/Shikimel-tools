@@ -22,12 +22,16 @@ function addPlayer() {
                 <div class="card-body">
                     <h5 class="card-title"><input class="form-control form-control-lg fs-2 fw-bold vertical-text border-0" type="text" value="" placeholder="${playerName}" style="height:8.75em;"></h5>
                     <div class="mb-2">
-                        <div class="text-center h1 fw-bold total-score" style="font-size:3.5rem;">0</div>
+                        <div id="${playerId}-1" class="text-center h1 fw-bold total-score rule1 d-block" style="font-size:3.5rem;">0</div>
+                        <div id="${playerId}-2" class="text-center h1 fw-bold total-score rule2 d-none" style="font-size:3.5rem;">0</div>
+                        <div id="${playerId}-3" class="text-center h1 fw-bold total-score rule3 d-none" style="font-size:3.5rem;">0</div>
+                        <div id="${playerId}-4" class="text-center h1 fw-bold total-score rule4 d-none" style="font-size:3.5rem;">0</div>
+                        <div id="${playerId}-5" class="text-center h1 fw-bold total-score rule5 d-none" style="font-size:3.5rem;">0</div>
                         <div class="row">
                         <div class="col pe-1 text-center h3 o-score">0</div>
                         <div class="col ps-1 text-center h3 x-score">0</div>
                         </div>
-                        <div class="row">
+                        <div class="row g-2 mt-0">
                             <div class="col pe-1">
                             <button class="btn btn-primary btn-circle w-100 increment"><i class="bi bi-circle"></i></button>
                             </div>
@@ -36,8 +40,14 @@ function addPlayer() {
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col">
+                            <div class="col-4 px-0 ps-1">
                                 <button class="btn btn-outline-warning w-100 delete-player"><i class="bi bi-trash"></i></button>
+                            </div>
+                            <div class="col-4 px-1">
+                            <button class="btn btn-outline-warning w-100 delete-player"><i class="bi bi-trash"></i></button>
+                            </div>
+                            <div class="col-4 px-0 pe-1">
+                            <button class="btn btn-outline-warning w-100 delete-player"><i class="bi bi-trash"></i></button>
                             </div>
                         </div>
                     </div>
@@ -47,6 +57,13 @@ function addPlayer() {
     `;
     $('#playerList').append(playerCard);
     updateButtons();
+
+    // チェックされているラジオボタンのIDの末尾を取得する
+    const id = $('[name="options-rule"]:checked').attr('id').slice(-1);
+    $(`.total-score`).removeClass('d-block').addClass('d-none');
+    $(`.rule${id}`).removeClass('d-none').addClass('d-block');
+
+    // 他のイベントリスナーや初期化の処理などもここに記述する
 }
 
 $(document).ready(function () {
@@ -63,10 +80,9 @@ $(document).ready(function () {
 function updateScore(playerId, value, isUndo = false) {
     const oScoreElem = $(`#${playerId} .o-score`);
     const xScoreElem = $(`#${playerId} .x-score`);
-    const totalScoreElem = $(`#${playerId} .total-score`);
     let oScore = parseInt(oScoreElem.text());
     let xScore = parseInt(xScoreElem.text());
-    let totalScore = parseInt(totalScoreElem.text());
+    let totalScore = 0;
 
     if (!isUndo) {
         actionStack.push({
@@ -77,37 +93,32 @@ function updateScore(playerId, value, isUndo = false) {
 
     // 点数を更新
     if (!isUndo) {
-        if (mode === "simple") {
-            if (value > 0) {
-                oScore += increment;
-            } else {
-                xScore += increment;
-            }
+        if (value > 0) {
+            oScore += increment;
         } else {
-            if (value > 0) {
-                if (oScore > 0) oScore -= increment;
-                else xScore += increment;
-            } else {
-                if (xScore > 0) xScore -= increment;
-                else oScore += increment;
-            }
+            xScore += increment;
         }
     } else {
-        if (mode === "simple") {
-            if (value > 0) {
-                oScore -= increment;
-            } else {
-                xScore -= increment;
-            }
+        if (value > 0) {
+            oScore -= increment;
+        } else {
+            xScore -= increment;
         }
     }
 
-    totalScore = oScore - xScore;
 
     // 表示を更新
     oScoreElem.text(oScore);
     xScoreElem.text(xScore);
-    totalScoreElem.text(totalScore);
+    for (let i = 0; i < 5; i++) {
+        const totalScoreElem = $(`#${playerId} .rule${i + 1}`)
+        i === 0 ? totalScore = oScore : '';
+        i === 1 ? totalScore = oScore - xScore : '';
+        //i === 2 ? totalScore = oScore - xScore : '';
+        i === 3 ? totalScore = oScore * (10 - xScore) : '';
+        //i === 4 ? totalScore = oScore - xScore : '';
+        totalScoreElem.text(totalScore);
+    };
 
     updateButtons();
 }
@@ -185,3 +196,9 @@ $(document).ready(function () {
         }
     }
 });
+
+
+function toggleRule(id) {
+    $(`.total-score`).removeClass('d-block').addClass('d-none');
+    $(`.rule${id}`).removeClass('d-none').addClass('d-block');
+};
