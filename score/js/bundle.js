@@ -19,7 +19,7 @@ function addPlayer() {
     const playerCard = `
         <div id="${playerId}" class="col player-card px-1">
             <div class="card">
-                <div class="card-body">
+                <div class="card-body pb-0">
                     <h5 class="card-title"><input class="form-control form-control-lg fs-2 fw-bold vertical-text border-0" type="text" value="" placeholder="${playerName}" style="height:8.75em;"></h5>
                     <div class="mb-2">
                         <div id="${playerId}-1" class="text-center h1 fw-bold total-score rule1 d-block" style="font-size:3.5rem;">0</div>
@@ -28,8 +28,8 @@ function addPlayer() {
                         <div id="${playerId}-4" class="text-center h1 fw-bold total-score rule4 d-none" style="font-size:3.5rem;">0</div>
                         <div id="${playerId}-5" class="text-center h1 fw-bold total-score rule5 d-none" style="font-size:3.5rem;">0</div>
                         <div class="row">
-                        <div class="col pe-1 text-center h3 o-score">0</div>
-                        <div class="col ps-1 text-center h3 x-score">0</div>
+                        <div class="col pe-1 text-center h2 o-score">0</div>
+                        <div class="col ps-1 text-center h2 x-score">0</div>
                         </div>
                         <div class="row g-2 mt-0">
                             <div class="col pe-1">
@@ -41,10 +41,10 @@ function addPlayer() {
                         </div>
                         <div class="row mt-2">
                             <div class="col-4 px-0 ps-1">
-                                <button class="btn btn-outline-warning w-100 delete-player"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-outline-primary w-100 win-player"><i class="bi bi-trophy"></i></button>
                             </div>
                             <div class="col-4 px-1">
-                            <button class="btn btn-outline-warning w-100 delete-player"><i class="bi bi-trash"></i></button>
+                            <button class="btn btn-outline-danger w-100 lose-player"><i class="bi bi-emoji-dizzy"></i></button>
                             </div>
                             <div class="col-4 px-0 pe-1">
                             <button class="btn btn-outline-warning w-100 delete-player"><i class="bi bi-trash"></i></button>
@@ -69,11 +69,21 @@ function addPlayer() {
 $(document).ready(function () {
     // プレイヤー削除ボタンのクリックイベントを追加
     $('#playerList').on('click', '.delete-player', function () {
-        playerCount--;
-        $(this).closest('.player-card').fadeOut(150, function () {
-            $(this).closest('.player-card').remove(); // 親のプレイヤーカードを削除
+        const playerId = $(this).closest('.player-card').attr('id');
+        $('#confirmationModal').modal('show'); // モーダルを表示
+
+        const inputValue = $(this).closest('.player-card').find('input').val();
+        const placeholder = $(this).closest('.player-card').find('input').attr('placeholder');
+        const displayText = inputValue ? inputValue : placeholder;
+        $('#delete-player-id').text(`【${displayText}】`);
+
+        $('#confirmDeleteBtn').click(function () {
+            // 削除の処理を行う
+            $('#' + playerId).fadeOut(150, function () {
+                $(this).remove(); // 親のプレイヤーカードを削除
+                updateButtons(); // ボタンの状態を更新
+            });
         });
-        updateButtons(); // ボタンの状態を更新
     });
 });
 

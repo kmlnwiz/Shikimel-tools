@@ -95,15 +95,15 @@
                     </div>
                     <div class="col-md-8 my-2 px-1">
                         <div class="btn-group">
-                        <input type="radio" class="btn-check" name="options-rule" id="option1" autocomplete="off" onClick="toggleRule(1)" checked>
-                        <label class="btn btn-lg btn-outline-indigo" for="option1">Simple</label>
-                        <input type="radio" class="btn-check" name="options-rule" id="option2" autocomplete="off" onClick="toggleRule(2)">
-                        <label class="btn btn-lg btn-outline-indigo" for="option2">+M / -N</label>
-                        <!--<input type="radio" class="btn-check" name="options-rule" id="option3" autocomplete="off" onClick="toggleRule(3)">
+                            <input type="radio" class="btn-check" name="options-rule" id="option1" autocomplete="off" onClick="toggleRule(1)" checked>
+                            <label class="btn btn-lg btn-outline-indigo" for="option1">Simple</label>
+                            <input type="radio" class="btn-check" name="options-rule" id="option2" autocomplete="off" onClick="toggleRule(2)">
+                            <label class="btn btn-lg btn-outline-indigo" for="option2">+M / -N</label>
+                            <!--<input type="radio" class="btn-check" name="options-rule" id="option3" autocomplete="off" onClick="toggleRule(3)">
                         <label class="btn btn-lg btn-outline-indigo" for="option3">Up-Down</label>-->
-                        <input type="radio" class="btn-check" name="options-rule" id="option4" autocomplete="off" onClick="toggleRule(4)">
-                        <label class="btn btn-lg btn-outline-indigo" for="option4">M by 10</label>
-                        <!--<input type="radio" class="btn-check" name="options-rule" id="option5" autocomplete="off" onClick="toggleRule(5)">
+                            <input type="radio" class="btn-check" name="options-rule" id="option4" autocomplete="off" onClick="toggleRule(4)">
+                            <label class="btn btn-lg btn-outline-indigo" for="option4">M by 10</label>
+                            <!--<input type="radio" class="btn-check" name="options-rule" id="option5" autocomplete="off" onClick="toggleRule(5)">
                         <label class="btn btn-lg btn-outline-indigo" for="option5">Divide</label>-->
                         </div>
                     </div>
@@ -111,6 +111,25 @@
                 <div id="playerList" class="row row-cols-10"></div>
                 <div class="row row-cols-5 mt-4">
                 </div>
+
+                <div class="modal fade" id="confirmationModal" tabindex="-1" aria-labelledby="confirmationModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header p-2">
+                                <h5 class="modal-title fw-bold" id="confirmationModalLabel">削除の確認</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="h5">本当に<span id="delete-player-id"></span>を削除しますか？</div>
+                            </div>
+                            <div class="modal-footer p-2">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                                <button type="button" class="btn btn-primary" id="confirmDeleteBtn" data-bs-dismiss="modal">削除する</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
         <footer class="footer mt-auto py-4 bg-light touch-none">
