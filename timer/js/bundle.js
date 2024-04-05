@@ -28,6 +28,10 @@ function updateTimer() {
 
         $('#startTimer').prop('disabled', true); // 数字がすべて出たら Start ボタンを無効化する
         $('#stopTimer').prop('disabled', true); // 数字がすべて出たら Stop ボタンを無効化する
+
+        // Play sound
+        var audio = new Audio('se/whistle.mp3');
+        audio.play();
     } else {
         const minutesLeft = Math.floor(timeLeft / (60 * 1000));
         const secondsLeft = Math.floor((timeLeft % (60 * 1000)) / 1000);
@@ -35,7 +39,6 @@ function updateTimer() {
         timerText.textContent = `${String(minutesLeft).padStart(2, '0')}:${String(secondsLeft).padStart(2, '0')}.${String(millisecondsLeft).padStart(2, '0')}`;
         $('#left-bar').css('width', (timeLeft / totalTime) * 100 + '%');
         $('#left-bar-label').attr('aria-valuenow', (timeLeft / totalTime));
-
     }
 }
 
@@ -62,7 +65,7 @@ function resetTimer() {
     $('#left-bar-label').attr('aria-valuenow', (timeLeft / totalTime));
 
     $('#startTimer').removeClass('d-none').prop('disabled', false);
-    $('#stopTimer').addClass('d-none');
+    $('#stopTimer').addClass('d-none').prop('disabled', false);
 }
 
 // キーボードイベントを追加して、スペースキーで startTimer と stopTimer を切り替える
