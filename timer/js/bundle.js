@@ -4,6 +4,12 @@ let timeLeft = totalTime;
 let isPaused = true;
 const timerText = document.getElementById('timer-text');
 
+let animationFrameId;
+let totalTime = (Number($('#set-min').val() * 60) + Number($('#set-sec').val())) * 1000;
+let timeLeft = totalTime;
+let isPaused = true;
+const timerText = document.getElementById('timer-text');
+
 function startTimer() {
     if (isPaused) { // 一時停止状態の場合、再開
         isPaused = false;
@@ -13,7 +19,7 @@ function startTimer() {
         if (timeLeft <= 0) { // タイマーが終了していた場合、リセット
             resetTimer();
         } else {
-            timerInterval = setInterval(updateTimer, 10);
+            animationFrameId = requestAnimationFrame(updateTimer);
         }
     }
 }
@@ -21,7 +27,7 @@ function startTimer() {
 function updateTimer() {
     timeLeft -= 10;
     if (timeLeft <= 0) {
-        clearInterval(timerInterval);
+        cancelAnimationFrame(animationFrameId);
         timerText.textContent = "Time's up!";
         $('#left-bar').css('width', 0 + '%');
         $('#left-bar-label').attr('aria-valuenow', 0);
@@ -39,12 +45,14 @@ function updateTimer() {
         timerText.textContent = `${String(minutesLeft).padStart(2, '0')}:${String(secondsLeft).padStart(2, '0')}.${String(millisecondsLeft).padStart(2, '0')}`;
         $('#left-bar').css('width', (timeLeft / totalTime) * 100 + '%');
         $('#left-bar-label').attr('aria-valuenow', (timeLeft / totalTime));
+
+        animationFrameId = requestAnimationFrame(updateTimer);
     }
 }
 
 function stopTimer() {
     if (!isPaused) { // タイマーが実行中の場合、停止
-        clearInterval(timerInterval);
+        cancelAnimationFrame(animationFrameId);
         isPaused = true;
         $('#startTimer').removeClass('d-none').prop('disabled', false);
         $('#stopTimer').addClass('d-none');
