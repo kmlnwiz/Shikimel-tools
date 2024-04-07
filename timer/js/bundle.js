@@ -15,7 +15,7 @@ function updateTimerDisplay() {
     const minutesLeft = Math.floor(timeLeft / (60 * 1000));
     const secondsLeft = Math.floor((timeLeft % (60 * 1000)) / 1000);
     const millisecondsLeft = Math.floor((timeLeft % 1000) / 10);
-    timerText.textContent = `${String(minutesLeft).padStart(2, '0')}:${String(secondsLeft).padStart(2, '0')}.${String(millisecondsLeft).padStart(2, '0')}`;
+    timerText.innerHTML = `${String(minutesLeft).padStart(2, '0')}:${String(secondsLeft).padStart(2, '0')}<span style="font-size: 0.75em;">.${String(millisecondsLeft).padStart(2, '0')}</span>`;
     $('#left-bar').css('width', (timeLeft / totalTime) * 100 + '%');
     $('#left-bar-label').attr('aria-valuenow', (timeLeft / totalTime));
 }
