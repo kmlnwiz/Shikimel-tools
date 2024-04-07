@@ -326,3 +326,26 @@ div.osero:hover {
 .mainContent{
   margin-bottom: 72.8px;
 }
+
+.matching-card .card-body:not(.bg-dark):hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.075) !important;
+}
+
+.matching-card .card-body.bg-dark:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+
+.connection-line {
+    display: none; /* デフォルトでは非表示 */
+    position: absolute;
+    pointer-events: none; /* イベントがキャンバス要素に影響しないようにする */
+    z-index: 1; /* 他の要素よりも手前に表示するために必要な場合があります */
+}
+
+.memory-card .card-body:hover{
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}

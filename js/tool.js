@@ -453,3 +453,16 @@ $(function () {
         });
     });
 });
+
+function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+        let j = Math.floor(Math.random() * i); // 元々のインデックスと同じにならないように修正
+
+        if (j >= i) {
+            j = i - 1; // jがi以上になるのを防ぐ
+        }
+
+        [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+}
