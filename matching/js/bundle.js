@@ -13,8 +13,8 @@ function dataLoad() {
 
     const fileInput = document.getElementById('formFile');
     const file = fileInput.files[0];
+
     if (file) { // ファイルが選択されている場合のみ処理を実行
-        // 拡張子をチェックしてtxtファイルのみを受け付ける
         const fileName = file.name;
         const fileExtension = fileName.split('.').pop().toLowerCase();
         if (fileExtension !== 'txt') {
@@ -43,7 +43,7 @@ function dataLoad() {
         reader.readAsText(file, 'UTF-8');
     } else {
         alert("ファイルが選択されていません。");
-    };
+    }
 };
 
 function processFileData(dataList) {
