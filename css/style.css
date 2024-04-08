@@ -117,7 +117,6 @@ nav {
 
 footer {
   border-top: .05rem solid #e5e5e5;
-  position: fixed;
   bottom: 0;
   left: 0;
   /* 左端に固定する場合 */
