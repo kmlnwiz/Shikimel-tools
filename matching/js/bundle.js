@@ -13,25 +13,30 @@ function dataLoad() {
 
     const fileInput = document.getElementById('formFile');
     const file = fileInput.files[0];
-    const reader = new FileReader();
 
-    reader.onload = function (event) {
-        const fileContent = event.target.result;
-        const lines = fileContent.trim().split('\n');
-        const title = lines.shift().split('\t')[1];
-        const dataArray = lines.map(line => line.split('\t'));
+    if (file) { // ファイルが選択されている場合のみ処理を実行
+        const reader = new FileReader();
 
-        const dataList = {
-            title: title,
-            data: dataArray
+        reader.onload = function (event) {
+            const fileContent = event.target.result;
+            const lines = fileContent.trim().split('\n');
+            const title = lines.shift().split('\t')[1];
+            const dataArray = lines.map(line => line.split('\t'));
+
+            const dataList = {
+                title: title,
+                data: dataArray
+            };
+            console.log(dataList);
+
+            // 読み込み完了後に処理を行う
+            processFileData(dataList);
         };
-        console.log(dataList);
 
-        // 読み込み完了後に処理を行う
-        processFileData(dataList);
-    };
-
-    reader.readAsText(file, 'UTF-8');
+        reader.readAsText(file, 'UTF-8');
+    } else {
+        alert("ファイルが選択されていません。");
+    }
 };
 
 function processFileData(dataList) {
@@ -45,13 +50,13 @@ function processFileData(dataList) {
                 <div class="card-header fs-1 fw-bold text-center">
                     ${String(i + 1).padStart(2, '0')}
                 </div>
-                <div class="card-body fs-3 fw-bold vertical-text text-center">
+                <div class="card-body fs-3 fw-bold vertical-text align-content-center text-center">
                     ${dataList.data[i][1]}
                 </div>
             </div>
         </div>`;
 
-        linesToConnect.push(i + 1);
+        linesToConnect.push(String(i + 1).padStart(2, '0'));
     };
 
     shuffleArray(dataList.data);
@@ -62,7 +67,7 @@ function processFileData(dataList) {
                 <div class="card-header fs-1 fw-bold text-center">
                     ${String(i + 1).padStart(2, '0')}
                 </div>
-                <div class="card-body fs-3 fw-bold vertical-text text-center">
+                <div class="card-body fs-3 fw-bold vertical-text align-content-center text-center">
                     ${dataList.data[i][2]}
                 </div>
             </div>
@@ -195,3 +200,31 @@ document.getElementById('temp-dl').addEventListener('click', function () {
     // リンクをクリックしてファイルをダウンロードする
     link.click();
 });
+
+function DocsLoad() {
+    const txt = `title	タイトル
+pair01	要素1-01	要素2-01
+pair02	要素1-02	要素2-02
+pair03	要素1-03	要素2-03
+pair04	要素1-04	要素2-04
+pair05	要素1-05	要素2-05
+pair06	要素1-06	要素2-06
+pair07	要素1-07	要素2-07
+pair08	要素1-08	要素2-08
+pair09	要素1-09	要素2-09
+pair10	要素1-10	要素2-10
+pair11	要素1-11	要素2-11
+pair12	要素1-12	要素2-12
+pair13	要素1-13	要素2-13
+pair14	要素1-14	要素2-14
+pair15	要素1-15	要素2-15
+pair16	要素1-16	要素2-16
+pair17	要素1-17	要素2-17
+pair18	要素1-18	要素2-18
+pair19	要素1-19	要素2-19
+pair20	要素1-20	要素2-20
+`;
+    $('#TextAreaDocs').val(txt);
+};
+
+DocsLoad();
