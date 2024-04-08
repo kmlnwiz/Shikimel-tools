@@ -24,7 +24,7 @@ function dataLoad() {
         reader.readAsText(file, 'UTF-8');
     } else {
         alert("ファイルが選択されていません。");
-    }
+    };
 };
 
 function processFileData(dataList) {
@@ -60,6 +60,7 @@ function processFileData(dataList) {
         </div>`;
     };
 
+    $('#content-title').html(dataList.title);
     $('#content-area').html(html);
 
 };

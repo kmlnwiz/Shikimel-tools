@@ -74,6 +74,7 @@ function processFileData(dataList) {
         </div>`;
     };
 
+    $('#content-title').html(dataList.title);
     $('#content-area').html(html);
 
     setTimeout(function () {
