@@ -46,7 +46,7 @@ function processFileData(dataList) {
                 <div class="card-header fs-1 fw-bold text-center">
                     ${String(i + 1).padStart(2, '0')}
                 </div>
-                <div class="card-body fs-3 fw-bold vertical-text align-content-center text-center bg-dark text-opacity">
+                <div class="card-body my-0 py-0 fs-4 fw-bold vertical-text align-content-center text-center bg-dark text-opacity">
                     ${dataList.data[i][1]}
                 </div>
             </div>
@@ -61,7 +61,7 @@ function processFileData(dataList) {
                 <div class="card-header fs-1 fw-bold text-center">
                     ${String(i + 1).padStart(2, '0')}
                 </div>
-                <div class="card-body fs-3 fw-bold vertical-text align-content-center text-center bg-dark text-opacity">
+                <div class="card-body my-0 py-0 fs-4 fw-bold vertical-text align-content-center text-center bg-dark text-opacity">
                     ${dataList.data[i][2]}
                 </div>
             </div>
