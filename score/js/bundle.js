@@ -85,6 +85,7 @@ $(document).ready(function () {
             $('#' + playerId).fadeOut(150, function () {
                 $(this).remove(); // 親のプレイヤーカードを削除
                 updateButtons(); // ボタンの状態を更新
+                playerCount--;
             });
         });
     });
