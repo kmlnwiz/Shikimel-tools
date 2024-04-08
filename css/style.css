@@ -65,7 +65,6 @@ html {
 div.menu-box {
   text-align: center;
   position: relative;
-  z-index: 1;
 }
 
 .menu-box:hover {
