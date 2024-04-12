@@ -30,7 +30,7 @@ function startTimer() {
             resetTimer();
         } else {
             startTime = Date.now() - (totalTime - timeLeft);
-            timerInterval = setInterval(updateTimer, 10);
+            timerInterval = setInterval(updateTimer, 1);
         }
     }
 }
