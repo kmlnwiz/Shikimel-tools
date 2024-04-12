@@ -131,7 +131,7 @@ function drawLines(linesToConnect) {
         context.moveTo(startX - parseInt(canvas.style.left), startY - parseInt(canvas.style.top));
         context.lineTo(endX - parseInt(canvas.style.left), endY - parseInt(canvas.style.top));
 
-        context.strokeStyle = 'rgba(0, 0, 0, 0.25)';
+        context.strokeStyle = 'rgba(255, 0, 0, 0.25)';
         context.lineWidth = 1;
         context.stroke();
 
