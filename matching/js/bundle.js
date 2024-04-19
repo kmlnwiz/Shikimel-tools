@@ -53,11 +53,11 @@ function processFileData(dataList) {
     for (let i = 0; i < dataList.data.length; i++) {
 
         html += `<div class="col px-1 mb-5">
-            <div class="card touch-none matching-card card-top-${dataList.data[i][0]} border-primary" style="height:43vh;" data-pair="${dataList.data[i][0].replace('pair', '')}">
+            <div class="card touch-none matching-card card-top-${dataList.data[i][0]} border-primary" style="height:42vh;" data-pair="${dataList.data[i][0].replace('pair', '')}">
                 <div class="card-header fs-1 fw-bold text-center">
                     ${String(i + 1).padStart(2, '0')}
                 </div>
-                <div class="card-body my-0 py-0 fs-4 fw-bold vertical-text align-content-center text-center">
+                <div class="card-body my-0 py-0 fs-3 fw-bold vertical-text align-content-center text-center">
                     ${dataList.data[i][1]}
                 </div>
             </div>
@@ -70,11 +70,11 @@ function processFileData(dataList) {
 
     for (let i = 0; i < dataList.data.length; i++) {
         html += `<div class="col px-1 mt-5">
-            <div class="card touch-none matching-card card-bottom-${dataList.data[i][0]} border-danger" style="height:43vh;">
+            <div class="card touch-none matching-card card-bottom-${dataList.data[i][0]} border-danger" style="height:42vh;">
                 <div class="card-header fs-1 fw-bold text-center">
                     ${String(i + 1).padStart(2, '0')}
                 </div>
-                <div class="card-body my-0 py-0 fs-4 fw-bold vertical-text align-content-center text-center">
+                <div class="card-body my-0 py-0 fs-3 fw-bold vertical-text align-content-center text-center">
                     ${dataList.data[i][2]}
                 </div>
             </div>
