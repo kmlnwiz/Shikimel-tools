@@ -56,8 +56,9 @@ function processFileData(dataList) {
 
     shuffleArray(dataList.data);
 
-    const fontSize = dataList.data[i][2].length >= 10 ? 'fs-4' : 'fs-3';
     for (let i = 0; i < dataList.data.length; i++) {
+
+        const fontSize = dataList.data[i][2].length >= 10 ? 'fs-4' : 'fs-3';
         html += `<div class="col px-1 mt-5">
             <div class="card touch-none memory-card card-bottom-${dataList.data[i][0]} border-danger" style="height:42vh;" data-pair="${dataList.data[i][0].replace('pair', '')}">
                 <div class="card-header fs-2 fw-bold text-center">
