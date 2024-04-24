@@ -49,7 +49,7 @@ function processFileData(dataList) {
                     ${String(i + 1).padStart(2, '0')}位
                 </div>
                 <div class="card-body my-0 py-0 ${fontSize} fw-bold align-content-center text-center bg-dark text-opacity col-10">
-                    ${dataList.data[i][1]}\t${dataList.data[i][2]}
+                    ${dataList.data[i][1]}\t${dataList.data[i].length >= 2 ? dataList.data[i][2] : ''}
                 </div>
                 </div>
             </div>
