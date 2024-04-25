@@ -1958,7 +1958,70 @@ progress {
     width: 10%;
   }
 
-    .row-cols-xl-20>* {
+    .row-cols-xl-11>* {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 9.09091%;
+  }
+
+    .row-cols-xl-12>* {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 8.33333%;
+  }
+
+    .row-cols-xl-13>* {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 7.69231%;
+  }
+
+    .row-cols-xl-14>* {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 7.14286%;
+  }
+
+  .row-cols-xl-15>* {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 6.66667%;
+  }
+
+    .row-cols-xl-16>* {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 6.25%;
+  }
+
+    .row-cols-xl-17>* {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 5.88235%;
+  }
+
+    .row-cols-xl-18>* {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 5.55556%;
+  }
+
+    .row-cols-xl-19>* {
+    -webkit-box-flex: 0;
+    -ms-flex: 0 0 auto;
+    flex: 0 0 auto;
+    width: 5.26316%;
+  }
+
+  .row-cols-xl-20>* {
     -webkit-box-flex: 0;
     -ms-flex: 0 0 auto;
     flex: 0 0 auto;

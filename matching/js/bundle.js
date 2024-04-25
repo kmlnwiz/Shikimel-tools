@@ -50,6 +50,12 @@ function processFileData(dataList) {
 
     let html = '';
 
+    const itemCount = dataList.data.length;
+    $('#content-area').removeClass(function (index, className) {
+        return (className.match(/(^|\s)row-cols-xl\S+/g) || []).join(' ');
+    });
+    $('#content-area').addClass(`row-cols-xl-${itemCount}`);
+
     for (let i = 0; i < dataList.data.length; i++) {
 
         const fontSize = dataList.data[i][1].length >= 10 ? 'fs-4' : 'fs-3';
