@@ -356,7 +356,29 @@ div.osero:hover {
   background-color: rgba(0, 0, 0, 0.75) !important;
 }
 
+.ranking-card .card-body:not(.bg-dark):hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.075) !important;
+}
+
+.ranking-card .card-body.bg-dark:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.75) !important;
+}
+
+.ranking-card .card-header{
+  border-radius: var(--bs-card-inner-border-radius) 0 0 var(--bs-card-inner-border-radius)!important;
+}
+
 .text-opacity {
   color: rgba(0, 0, 0, 0.0);
   /* テキストの色と透明度を設定 */
+}
+
+.memory-card .card-body{
+  border-radius: 0 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius)!important;
+}
+
+.ranking-card .card-body{
+  border-radius: 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0!important;
 }

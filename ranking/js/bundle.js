@@ -43,13 +43,13 @@ function processFileData(dataList) {
 
         const fontSize = dataList.data[i][1].length >= 10 ? 'fs-0' : 'fs-0';
         html += `<div class="col px-1 mb-2">
-            <div class="card touch-none memory-card card-top-${dataList.data[i][0]} border-primary" data-pair="${dataList.data[i][0].replace('pair', '')}">
+            <div class="card touch-none ranking-card card-top-${dataList.data[i][0]} border-primary" data-pair="${dataList.data[i][0].replace('pair', '')}">
             <div class="row g-0">
-                <div class="card-header fs-0 fw-bold text-center col-2">
+                <div class="card-header fs-0 fw-bold text-center col-2 border-end border-bottom-0">
                     ${String(i + 1).padStart(2, '0')}位
                 </div>
-                <div class="card-body my-0 py-0 ${fontSize} fw-bold align-content-center text-center bg-dark text-opacity col-10">
-                    ${dataList.data[i][1]}\t${dataList.data[i].length >= 2 ? dataList.data[i][2] : ''}
+                <div class="card-body ranking-hide my-0 py-0 ${fontSize} fw-bold align-content-center text-center bg-dark text-opacity col-10">
+                    ${dataList.data[i][1]}\t${dataList.data[i].length > 2 ? dataList.data[i][2] : ''}
                 </div>
                 </div>
             </div>
@@ -61,7 +61,7 @@ function processFileData(dataList) {
 
 };
 
-$(document).on('click', '.memory-card', function () {
+$(document).on('click', '.ranking-card', function () {
     // クリックされたcard-top-pairのdata-pair属性の値を取得
     const dataPair = $(this).attr('data-pair');
     //console.log(dataPair);
