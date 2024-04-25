@@ -56,6 +56,10 @@ function processFileData(dataList) {
     });
     $('#content-area').addClass(`row-cols-xl-${itemCount}`);
 
+    if ($('#setRandom').prop('checked')) {
+        shuffleArray(dataList.data);
+    };
+
     for (let i = 0; i < dataList.data.length; i++) {
 
         const fontSize = dataList.data[i][1].length >= 10 ? 'fs-2' : 'fs-1';
