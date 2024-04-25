@@ -59,8 +59,8 @@ function processFileData(dataList) {
     for (let i = 0; i < dataList.data.length; i++) {
 
         const fontSize = dataList.data[i][1].length >= 10 ? 'fs-2' : 'fs-1';
-        html += `<div class="col px-1 mb-5">
-            <div class="card touch-none matching-card card-top-${dataList.data[i][0]} border-primary" style="height:42vh;" data-pair="${dataList.data[i][0].replace('pair', '')}">
+        html += `<div class="col px-1 mb-3">
+            <div class="card touch-none matching-card card-top-${dataList.data[i][0]} border-primary" style="height:44vh;" data-pair="${dataList.data[i][0].replace('pair', '')}">
                 <div class="card-header fs-2 fw-bold text-center">
                     ${String(i + 1).padStart(2, '0')}
                 </div>
@@ -78,8 +78,8 @@ function processFileData(dataList) {
     for (let i = 0; i < dataList.data.length; i++) {
 
         const fontSize = dataList.data[i][2].length >= 10 ? 'fs-2' : 'fs-1';
-        html += `<div class="col px-1 mt-5">
-            <div class="card touch-none matching-card card-bottom-${dataList.data[i][0]} border-danger" style="height:42vh;">
+        html += `<div class="col px-1 mt-3">
+            <div class="card touch-none matching-card card-bottom-${dataList.data[i][0]} border-danger" style="height:44vh;">
                 <div class="card-header fs-2 fw-bold text-center">
                     ${String(i + 1).padStart(2, '0')}
                 </div>
