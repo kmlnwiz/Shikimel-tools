@@ -62,9 +62,17 @@ function processFileData(dataList) {
 
     for (let i = 0; i < dataList.data.length; i++) {
 
-        let fontSize = dataList.data[i][1].length >= 10 ? 'fs-2' : 'fs-1';
-        fontSize = dataList.data[i][1].length >= 15 ? 'fs-3' : 'fs-2';
-        fontSize = dataList.data[i][1].length >= 20 ? 'fs-4' : 'fs-3';
+        let fontSize;
+        if (dataList.data[i][1].length >= 20) {
+            fontSize = 'fs-4';
+        } else if (dataList.data[i][1].length >= 15) {
+            fontSize = 'fs-3';
+        } else if (dataList.data[i][1].length >= 10) {
+            fontSize = 'fs-2';
+        } else {
+            fontSize = 'fs-1'; // Default font size if none of the conditions are met
+        }
+
         html += `<div class="col px-1 mb-4">
             <div class="card touch-none matching-card card-top-${dataList.data[i][0]} border-primary" style="height:44vh;" data-pair="${dataList.data[i][0].replace('pair', '')}">
                 <div class="card-header fs-2 fw-bold text-center">
@@ -83,9 +91,17 @@ function processFileData(dataList) {
 
     for (let i = 0; i < dataList.data.length; i++) {
 
-        let fontSize = dataList.data[i][1].length >= 10 ? 'fs-2' : 'fs-1';
-        fontSize = dataList.data[i][1].length >= 15 ? 'fs-3' : 'fs-2';
-        fontSize = dataList.data[i][1].length >= 20 ? 'fs-4' : 'fs-3';
+        let fontSize;
+        if (dataList.data[i][1].length >= 20) {
+            fontSize = 'fs-4';
+        } else if (dataList.data[i][1].length >= 15) {
+            fontSize = 'fs-3';
+        } else if (dataList.data[i][1].length >= 10) {
+            fontSize = 'fs-2';
+        } else {
+            fontSize = 'fs-1'; // Default font size if none of the conditions are met
+        }
+
         html += `<div class="col px-1 mt-3">
             <div class="card touch-none matching-card card-bottom-${dataList.data[i][0]} border-danger" style="height:44vh;">
                 <div class="card-header fs-2 fw-bold text-center">
