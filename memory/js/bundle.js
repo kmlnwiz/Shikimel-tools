@@ -52,11 +52,11 @@ function processFileData(dataList) {
     for (let i = 0; i < dataList.data.length; i++) {
 
         let fontSize;
-        if (dataList.data[i][1].length >= 20) {
+        if (dataList.data[i][1].length > 15) {
             fontSize = 'fs-4';
-        } else if (dataList.data[i][1].length >= 15) {
+        } else if (dataList.data[i][1].length > 10) {
             fontSize = 'fs-3';
-        } else if (dataList.data[i][1].length >= 10) {
+        } else if (dataList.data[i][1].length > 5) {
             fontSize = 'fs-2';
         } else {
             fontSize = 'fs-1'; // Default font size if none of the conditions are met
@@ -79,11 +79,11 @@ function processFileData(dataList) {
     for (let i = 0; i < dataList.data.length; i++) {
 
         let fontSize;
-        if (dataList.data[i][1].length >= 20) {
+        if (dataList.data[i][2].length > 15) {
             fontSize = 'fs-4';
-        } else if (dataList.data[i][1].length >= 15) {
+        } else if (dataList.data[i][2].length > 10) {
             fontSize = 'fs-3';
-        } else if (dataList.data[i][1].length >= 10) {
+        } else if (dataList.data[i][2].length > 5) {
             fontSize = 'fs-2';
         } else {
             fontSize = 'fs-1'; // Default font size if none of the conditions are met
