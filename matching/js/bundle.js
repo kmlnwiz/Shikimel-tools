@@ -73,8 +73,8 @@ function processFileData(dataList) {
             fontSize = 'fs-1'; // Default font size if none of the conditions are met
         }
 
-        html += `<div class="col px-1 mb-4">
-            <div class="card touch-none matching-card card-top-${dataList.data[i][0]} border-primary" style="height:44vh;" data-pair="${dataList.data[i][0].replace('pair', '')}">
+        html += `<div class="col px-1 mb-5">
+            <div class="card touch-none matching-card card-top-${dataList.data[i][0]} border-primary" style="height:43vh;" data-pair="${dataList.data[i][0].replace('pair', '')}">
                 <div class="card-header fs-2 fw-bold text-center">
                     ${String(i + 1).padStart(2, '0')}
                 </div>
@@ -102,8 +102,8 @@ function processFileData(dataList) {
             fontSize = 'fs-1'; // Default font size if none of the conditions are met
         }
 
-        html += `<div class="col px-1 mt-3">
-            <div class="card touch-none matching-card card-bottom-${dataList.data[i][0]} border-danger" style="height:44vh;">
+        html += `<div class="col px-1 mt-4">
+            <div class="card touch-none matching-card card-bottom-${dataList.data[i][0]} border-danger" style="height:43vh;">
                 <div class="card-header fs-2 fw-bold text-center">
                     ${String(i + 1).padStart(2, '0')}
                 </div>
@@ -164,8 +164,8 @@ function drawLines(linesToConnect) {
         context.moveTo(startX - parseInt(canvas.style.left), startY - parseInt(canvas.style.top));
         context.lineTo(endX - parseInt(canvas.style.left), endY - parseInt(canvas.style.top));
 
-        context.strokeStyle = 'rgba(255, 0, 0, 0.25)';
-        context.lineWidth = 1;
+        context.strokeStyle = 'rgba(255, 0, 0, 0.80)';
+        context.lineWidth = 2;
         context.stroke();
 
         // canvas-area要素にキャンバスを追加
