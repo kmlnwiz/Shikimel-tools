@@ -52,7 +52,7 @@ function processFileData(dataList) {
     for (let i = 0; i < dataList.data.length; i++) {
 
         let fontSize;
-        if (dataList.data[i][1].length > 15) {
+        if (dataList.data[i][1].length > 14) {
             fontSize = 'fs-4';
         } else if (dataList.data[i][1].length > 10) {
             fontSize = 'fs-3';
