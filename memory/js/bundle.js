@@ -56,7 +56,7 @@ function processFileData(dataList) {
             fontSize = 'fs-4';
         } else if (dataList.data[i][1].length > 10) {
             fontSize = 'fs-3';
-        } else if (dataList.data[i][1].length > 5) {
+        } else if (dataList.data[i][1].length > 7) {
             fontSize = 'fs-2';
         } else {
             fontSize = 'fs-1'; // Default font size if none of the conditions are met
