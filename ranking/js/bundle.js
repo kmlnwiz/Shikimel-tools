@@ -41,15 +41,15 @@ function processFileData(dataList) {
 
     for (let i = 0; i < dataList.data.length; i++) {
 
-        const fontSize = dataList.data[i][1].length >= 10 ? 'fs-0' : 'fs-0';
-        html += `<div class="col px-1 mb-2">
-            <div class="card touch-none ranking-card card-top-${dataList.data[i][0]} border-primary" data-pair="${dataList.data[i][0].replace('pair', '')}">
+        const fontSize = dataList.data[i][2].length >= 10 ? 'fs-1' : 'fs-1';
+        html += `<div class="col px-3 mb-2">
+            <div class="card touch-none ranking-card card-top-${dataList.data[i][1]} border-primary" data-pair="${dataList.data[i][0].replace('pair', '')}">
             <div class="row g-0">
-                <div class="card-header fs-0 fw-bold text-center col-2 border-end border-bottom-0">
-                    ${String(i + 1).padStart(2, '0')}位
+                <div class="card-header fs-1 fw-bold text-center col-2 border-end border-bottom-0">
+                    ${dataList.data[i][1].padStart(2, '0')}位
                 </div>
                 <div class="card-body ranking-hide my-0 py-0 ${fontSize} fw-bold align-content-center text-center bg-dark text-opacity col-10">
-                    ${dataList.data[i][1]}\t${dataList.data[i].length > 2 ? dataList.data[i][2] : ''}
+                    ${dataList.data[i][2]}\t${dataList.data[i].length > 2 ? dataList.data[i][3] : ''}
                 </div>
                 </div>
             </div>
@@ -106,16 +106,16 @@ document.getElementById('temp-dl').addEventListener('click', function () {
 
 function DocsLoad() {
     const txt = `title	国土最大面積が大きい順
-rank    01	ロシア	17,124,442km²
-rank    02	カナダ	9,984,670km²
-rank    03	アメリカ	9,634,060km²
-rank    04	中国	9,631,420km²
-rank    05	ブラジル	8,515,767km²
-rank    06	オーストラリア	7,692,024km²
-rank    07	インド	3,287,263km²
-rank    08	アルゼンチン	2,780,400km²
-rank    09	カザフスタン	2,724,900km²
-rank    10	アルジェリア	2,505,742km²
+rank	01	ロシア	17,124,442km²
+rank	02	カナダ	9,984,670km²
+rank	03	アメリカ	9,634,060km²
+rank	04	中国	9,631,420km²
+rank	05	ブラジル	8,515,767km²
+rank	06	オーストラリア	7,692,024km²
+rank	07	インド	3,287,263km²
+rank	08	アルゼンチン	2,780,400km²
+rank	09	カザフスタン	2,724,900km²
+rank	10	アルジェリア	2,505,742km²
 `;
     $('#TextAreaDocs').val(txt);
 };
