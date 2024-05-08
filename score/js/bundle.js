@@ -19,6 +19,7 @@ function addPlayer() {
     const playerCard = `
         <div id="${playerId}" class="col player-card px-1">
             <div class="card">
+
                 <div class="card-body pb-0">
                     <h5 class="card-title"><input class="form-control form-control-lg fs-3 fw-bold vertical-text border-0" type="text" value="" placeholder="${playerName}" style="height:15rem;"></h5>
                     <div class="mb-2">
