@@ -20,7 +20,7 @@ function stopRoulette() {
         numbers.push(currentNumber);
         const colors = ['danger', 'primary', 'warning', 'success']
         let ColorClass = colors[(numbers.length - 1) % 4];
-        $('#called-numbers').append(`<div class="col mt-0 mb-1"><p class="border border-3 border-${ColorClass} text-center py-0 mb-1 rounded fw-bold bg-${ColorClass} bg-opacity-10 fade-in touch-none" style="font-size:4.0rem;">${String(currentNumber).padStart(2, '0')}</p></div>`);
+        $('#called-numbers').append(`<div class="col mt-0 mb-1"><p class="border border-3 border-${ColorClass} text-center py-0 mb-1 rounded fw-bold bg-${ColorClass} bg-opacity-10 fade-in touch-none" style="font-size:3.6rem;">${String(currentNumber).padStart(2, '0')}</p></div>`);
         $('.already-display').html(String(numbers.length).padStart(2, '0'));
         $('.remain-display').html(String(((maxNumber - minNumber + 1) * sameNumber) - numbers.length).padStart(2, '0'));
     }
