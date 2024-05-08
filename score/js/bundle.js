@@ -20,7 +20,7 @@ function addPlayer() {
         <div id="${playerId}" class="col player-card px-1">
             <div class="card">
                 <div class="card-body pb-0">
-                    <h5 class="card-title"><input class="form-control form-control-lg fs-2 fw-bold vertical-text border-0" type="text" value="" placeholder="${playerName}" style="height:8.75em;"></h5>
+                    <h5 class="card-title"><input class="form-control form-control-lg fs-3 fw-bold vertical-text border-0" type="text" value="" placeholder="${playerName}" style="height:15rem;"></h5>
                     <div class="mb-2">
                         <div id="${playerId}-1" class="text-center h1 fw-bold total-score rule1 d-block" style="font-size:3.5rem;">0</div>
                         <div id="${playerId}-2" class="text-center h1 fw-bold total-score rule2 d-none" style="font-size:3.5rem;">0</div>
