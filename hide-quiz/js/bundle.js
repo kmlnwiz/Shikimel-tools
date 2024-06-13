@@ -1,11 +1,9 @@
 // Main function that runs on page load
 function ready() {
-    $("#overlay").fadeIn(300);
     let data = [{
         question: $('#question-text').val() !== "" ? escapeHtml($('#question-text').val()) : escapeHtml($('#question-text').attr('placeholder'))
     }];
     output(data);
-    $("#overlay").fadeOut(300);
 };
 
 // Function to generate HTML content based on the input data
