@@ -366,8 +366,8 @@ div.osero:hover {
   background-color: rgba(0, 0, 0, 0.75) !important;
 }
 
-.ranking-card .card-header{
-  border-radius: var(--bs-card-inner-border-radius) 0 0 var(--bs-card-inner-border-radius)!important;
+.ranking-card .card-header {
+  border-radius: var(--bs-card-inner-border-radius) 0 0 var(--bs-card-inner-border-radius) !important;
 }
 
 .text-opacity {
@@ -375,10 +375,29 @@ div.osero:hover {
   /* テキストの色と透明度を設定 */
 }
 
-.memory-card .card-body{
-  border-radius: 0 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius)!important;
+.memory-card .card-body {
+  border-radius: 0 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) !important;
 }
 
-.ranking-card .card-body{
-  border-radius: 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0!important;
+.ranking-card .card-body {
+  border-radius: 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 !important;
 }
+
+    /* Customize styles for map */
+    #map-container {
+      width: 100%;
+      max-width: 800px; /* Adjust as needed */
+      margin: auto;
+    }
+    #map-svg {
+      width: 100%;
+    }
+    .prefecture {
+      fill: #ccc; /* Default color */
+      stroke: #666;
+      stroke-width: 1;
+      cursor: pointer;
+    }
+    .prefecture:hover {
+      fill: #f00; /* Hover color */
+    }
