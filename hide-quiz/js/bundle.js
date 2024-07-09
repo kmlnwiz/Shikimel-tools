@@ -23,7 +23,7 @@ function output(array) {
 
         for (let j = 0; j < str_len; j++) {
             html += `<div class="col" style="padding: 0.125rem !important;"><div id="str_a${i}-${j + 1}" class="str-blind blind-1 py-4 m-0 border bg-dark bg-gradient text-white fw-bold text-center touch-none rounded-3" style="font-size:5.0rem;">${j + 1 + count}</div>`;
-            html += `<div id="str_b${i}-${j + 1}" class="str-blind blind-2 col py-4 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 d-none" style="font-size:5.0rem;">${item.question[j]}<br><small class="fw-nomal fs-3 opacity-50 fw-bold position-absolute text-center" style="width:3rem; margin-left: -1.4rem !important; margin-top: -0.5rem !important;">${j + 1}</small></div></div>`;
+            html += `<div id="str_b${i}-${j + 1}" class="str-blind blind-2 col py-4 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 d-none" style="font-size:5.0rem;">${item.question[j]}<br><small class="fw-nomal fs-3 opacity-50 fw-bold position-absolute text-center" style="width:3rem; margin-left: -1.4rem !important; margin-top: -0.5rem !important; pointer-events:none;">${j + 1}</small></div></div>`;
         }
         count += str_len;
     });
