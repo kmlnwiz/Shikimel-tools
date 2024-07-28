@@ -97,8 +97,8 @@ function toggleAll(open) {
 
 // Function to generate an image from the content
 function generateImg() {
-    $('.blind-1').addClass('d-none').removeClass('d-block');
-    $('.blind-2').removeClass('d-none').addClass('d-block');
+    //$('.blind-1').addClass('d-none').removeClass('d-block');
+    //$('.blind-2').removeClass('d-none').addClass('d-block');
 
     setTimeout(() => {
         const content = document.querySelector('#imgContent');
@@ -117,8 +117,8 @@ function generateImg() {
             const imgData = canvas.toDataURL();
             canvasElement.src = imgData;
 
-            $('.blind-2').addClass('d-none').removeClass('d-block');
-            $('.blind-1').removeClass('d-none').addClass('d-block');
+            //$('.blind-2').addClass('d-none').removeClass('d-block');
+            //$('.blind-1').removeClass('d-none').addClass('d-block');
             $('#imgContent').find('#imgAns').remove();
         });
     }, 200);
