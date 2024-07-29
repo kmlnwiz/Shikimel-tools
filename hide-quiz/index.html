@@ -101,7 +101,8 @@
                         <span class="border-bottom h4 d-block">問題入力</span>
                         <div class="row">
                             <div class="col">
-                                <textarea type="text" class="form-control" id="question-text" value="" placeholder="山梨県と静岡県にまたがる、標高3776mと日本で一番高い山は何？" rows="3"></textarea>
+                                <textarea type="text" class="form-control" id="question-text" value="" placeholder="山梨県と静岡県にまたがる、標高3776mと日本で一番高い山は何？" rows="3" onkeyup="lengthCount()"></textarea>
+                                <span id="question-length" class="fw-bold text-end d-block m-1 h5">0</span>
                             </div>
                         </div>
                     </div>
