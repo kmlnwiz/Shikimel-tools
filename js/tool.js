@@ -129,40 +129,6 @@ function dateMolding(date) {
     return date;
 };
 
-function strCount(text) {
-    let str = text;
-    str = str.replaceAll('(', '');
-    str = str.replaceAll(/\|([\u3040-\u309F]*[\u30A0-\u30FF]*)\)/g, '');
-    return String(str).length;
-};
-
-function lengthCount(id) {
-    let textarea_id = id ? `question-${id}` : `question`;
-    let length_id = id ? `question-length-${id}` : `question-length`;
-    if (document.getElementById(`${textarea_id}`) != null) {
-        let str = $(`#${textarea_id}`).val();
-        str = str.replaceAll('(', '');
-        str = str.replaceAll(/\|([\u3040-\u309F]*[\u30A0-\u30FF]*)\)/g, '');
-        //console.log(str)
-        let strLength = strCount(str);
-
-        if (strLength >= 250) {
-            $(`#${length_id}`).html(`<span class="text-danger">${strLength}</span>`);
-        } else {
-            $(`#${length_id}`).html(strLength);
-        };
-
-        if (Number(strLength) > 500) {
-            $(`#${textarea_id}`).val(($(`#${textarea_id}`).val()).substr(0, 500));
-            $(`#${length_id}`).html(`<span class="text-danger">500</span>`);
-        };
-    };
-};
-
-$(function () {
-    lengthCount();
-});
-
 function escapeHtml(data) {
     //data = data.replace(/&/g, '&amp;');
     data = data.replace(/>/g, '&gt;');
