@@ -383,21 +383,27 @@ div.osero:hover {
   border-radius: 0 var(--bs-card-inner-border-radius) var(--bs-card-inner-border-radius) 0 !important;
 }
 
-    /* Customize styles for map */
-    #map-container {
-      width: 100%;
-      max-width: 800px; /* Adjust as needed */
-      margin: auto;
-    }
-    #map-svg {
-      width: 100%;
-    }
-    .prefecture {
-      fill: #ccc; /* Default color */
-      stroke: #666;
-      stroke-width: 1;
-      cursor: pointer;
-    }
-    .prefecture:hover {
-      fill: #f00; /* Hover color */
-    }
+/* Customize styles for map */
+#map-container {
+  width: 100%;
+  max-width: 800px;
+  /* Adjust as needed */
+  margin: auto;
+}
+
+#map-svg {
+  width: 100%;
+}
+
+.prefecture {
+  fill: #ccc;
+  /* Default color */
+  stroke: #666;
+  stroke-width: 1;
+  cursor: pointer;
+}
+
+.prefecture:hover {
+  fill: #f00;
+  /* Hover color */
+}
