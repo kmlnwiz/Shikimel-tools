@@ -126,3 +126,9 @@ function generateImg() {
 
 // Automatically execute the ready function when the page loads
 $(document).ready(ready);
+
+function lengthCount() {
+    let str = $('#question-text').val();
+    let strLength = String(str).length;
+    $('#question-length').html(strLength);
+};
