@@ -226,11 +226,11 @@ div.osero:hover {
 }
 
 .blind-1:hover {
-  background-color: rgba(0, 0, 0, 0.75) !important;
+  background-color: rgba(0, 0, 0, 1.00) !important;
 }
 
 .blind-2:hover {
-  background-color: rgba(0, 0, 0, 0.075) !important;
+  background-color: rgba(0, 0, 0, 0.25) !important;
 }
 
 .trialform:hover {
@@ -327,12 +327,12 @@ div.osero:hover {
 
 .matching-card .card-body:not(.bg-dark):hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.075) !important;
+  background-color: rgba(0, 0, 0, 0.25) !important;
 }
 
 .matching-card .card-body.bg-dark:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.75) !important;
+  background-color: rgba(0, 0, 0, 0.25) !important;
 }
 
 
@@ -348,22 +348,22 @@ div.osero:hover {
 
 .memory-card .card-body:not(.bg-dark):hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.075) !important;
+  background-color: rgba(0, 0, 0, 0.25) !important;
 }
 
 .memory-card .card-body.bg-dark:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.75) !important;
+  background-color: rgba(0, 0, 0, 1.00) !important;
 }
 
 .ranking-card .card-body:not(.bg-dark):hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.075) !important;
+  background-color: rgba(0, 0, 0, 0.25) !important;
 }
 
 .ranking-card .card-body.bg-dark:hover {
   cursor: pointer;
-  background-color: rgba(0, 0, 0, 0.75) !important;
+  background-color: rgba(0, 0, 0, 1.00) !important;
 }
 
 .ranking-card .card-header {
