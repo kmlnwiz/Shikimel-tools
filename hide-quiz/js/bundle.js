@@ -23,7 +23,7 @@ function output(array) {
 
         for (let j = 0; j < str_len; j++) {
             html += `<div class="col" style="padding: 0.125rem !important;"><div id="str_a${i}-${j + 1}" class="str-blind blind-1 py-4 m-0 border bg-dark bg-gradient text-white fw-bold text-center touch-none rounded-3" style="font-size:5.0rem;">${j + 1 + count}</div>`;
-            html += `<div id="str_b${i}-${j + 1}" class="str-blind blind-2 col py-4 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 d-none" style="font-size:5.0rem;">${item.question[j]}<br><small class="fw-nomal fs-3 opacity-50 fw-bold position-absolute text-center" style="width:3rem; margin-left: -1.4rem !important; margin-top: -0.5rem !important; pointer-events:none;">${j + 1}</small></div></div>`;
+            html += `<div id="str_b${i}-${j + 1}" class="str-blind blind-2 col py-4 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 d-none border-secondary" style="font-size:5.0rem;">${item.question[j]}<br><small class="fw-nomal fs-3 opacity-50 fw-bold position-absolute text-center" style="width:3rem; margin-left: -1.4rem !important; margin-top: -0.75rem !important; pointer-events:none;">${j + 1}</small></div></div>`;
         }
         count += str_len;
     });
@@ -32,6 +32,7 @@ function output(array) {
     $("#open-count").html(open_count);
     $("#open-count-max").html(open_count);
     $("#open-count").val(open_count);
+    $("#opened-count").html(0);
 };
 
 // Function to escape HTML characters
@@ -77,6 +78,7 @@ $(document).on("click", 'div[id^="str_a"], div[id^="str_b"]', function (event) {
 
     const open_count = Number($('#open-count').text());
     $('#open-count').html(isA ? open_count - 1 : open_count + 1);
+    $('#opened-count').html(isA ? $("#open-count-max").html() - open_count + 1 : $("#open-count-max").html() - open_count - 1);
 });
 
 // Function to toggle all elements open or closed
@@ -88,10 +90,12 @@ function toggleAll(open) {
         str_a.addClass('d-none').removeClass('d-block');
         str_b.removeClass('d-none').addClass('d-block');
         $('#open-count').html(0);
+        $('#opened-count').html(escapeHtml($('#open-count').val()));
     } else {
         str_b.addClass('d-none').removeClass('d-block');
         str_a.removeClass('d-none').addClass('d-block');
         $('#open-count').html(escapeHtml($('#open-count').val()));
+        $('#opened-count').html(0);
     }
 }
 
