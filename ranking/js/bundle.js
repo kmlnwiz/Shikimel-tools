@@ -41,7 +41,7 @@ function processFileData(dataList) {
 
     for (let i = 0; i < dataList.data.length; i++) {
 
-        const fontSize = dataList.data[i][2].length >= 10 ? 'fs-0' : 'fs-0';
+        const fontSize = dataList.data[i][2].length >= 10 ? 'fs-0' : 'fs-lg';
         html += `<div class="col px-3 mb-2">
             <div class="card touch-none ranking-card card-top-${dataList.data[i][1]} border-primary" data-pair="${dataList.data[i][0].replace('pair', '')}">
             <div class="row g-0">
