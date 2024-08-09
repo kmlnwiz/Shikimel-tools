@@ -45,7 +45,7 @@ function processFileData(dataList) {
         html += `<div class="col px-3 mb-2">
             <div class="card touch-none ranking-card card-top-${dataList.data[i][1]} border-primary" data-pair="${dataList.data[i][0].replace('pair', '')}">
             <div class="row g-0">
-                <div class="card-header fs-1 fw-bold text-center col-2 border-end border-bottom-0">
+                <div class="card-header ${fontSize} fw-bold text-center col-2 border-end border-bottom-0">
                     ${dataList.data[i][1].padStart(2, '0')}位
                 </div>
                 <div class="card-body ranking-hide my-0 py-0 ${fontSize} fw-bold align-content-center text-center bg-dark text-opacity col-10">
