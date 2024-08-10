@@ -118,13 +118,16 @@
 
             <span id="contentArea" class="tab-content bg-light p-2" style="max-width: 1600px;">
                 <div id="quiz" class="tab-pane fade show active" role="tabpanel" aria-labelledby="quiz-tab">
-                    <div class="col my-2">
-                        <button type="button" id="createImgButton" class="btn btn-lg btn-success py-2 mb-2" style="font-size: xx-large;" data-bs-toggle="modal" data-bs-target="#createImg" onClick="generateImg()">画像化</button>
-                        <button type="button" class="btn btn-lg btn-indigo py-2 mb-2" onClick="toggleAll(true)" style="font-size: xx-large;">全て開ける</button>
-                        <button type="button" class="btn btn-lg btn-secondary py-2 mb-2" onClick="toggleAll(false)" style="font-size: xx-large;">全て隠す</button>
-                        <!--<input class="d-inline-block form-control form-control-lg w-50" type="text" placeholder="" aria-label="">-->
-
-                        <div class="fw-bold text-center border-top border-bottom border-3 border-pink text-pink none-touch my-2" style="font-size:4.0rem;"><span id="open-count">0</span> / <span id="open-count-max">0</span>（<span id="opened-count"></span>）</div>
+                    <div class="row g-0 border-top border-bottom border-3 border-pink">
+                        <div class="col-auto align-content-center">
+                            <button type="button" id="createImgButton" class="btn btn-lg btn-success py-2" style="font-size: xx-large;" data-bs-toggle="modal" data-bs-target="#createImg" onClick="generateImg()">画像化</button>
+                            <button type="button" class="btn btn-lg btn-indigo py-2" onClick="toggleAll(true)" style="font-size: xx-large;">全て開ける</button>
+                            <button type="button" class="btn btn-lg btn-secondary py-2" onClick="toggleAll(false)" style="font-size: xx-large;">全て隠す</button>
+                            <!--<input class="d-inline-block form-control form-control-lg w-50" type="text" placeholder="" aria-label="">-->
+                        </div>
+                        <div class="col">
+                            <div class="fw-bold text-center text-pink none-touch my-2 display-1" style="font-size:4.0rem;"><span id="open-count">0</span> / <span id="open-count-max">0</span>（<span id="opened-count"></span>）</div>
+                        </div>
                     </div>
                     <div id="imgContent">
                         <div id="output-area" class="row row-cols-5 row-cols-md-10 row-cols-lg-10 g-0 my-2">
@@ -171,16 +174,17 @@
         </div>
     </footer>
 </body>
-  <style>
+<style>
     @font-face {
-      font-family: 'NewRodin-B';
-      src: url('NewRodin-B.ttf') format('truetype');
+        font-family: 'NewRodin-B';
+        src: url('NewRodin-B.ttf') format('truetype');
     }
+
     #output-area {
-      font-family: 'NewRodin-B', 'Helvetica Neue',
-    'Helvetica',
-    'Arial',
-    sans-serif;
+        font-family: 'NewRodin-B', 'Helvetica Neue',
+            'Helvetica',
+            'Arial',
+            sans-serif;
     }
-    </style>
+</style>
 </html>
