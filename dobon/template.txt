@@ -1,0 +1,21 @@
+title	植物を表す漢字を選べ
+Element01	馬酔木	0	アシビ
+Element02	紫陽花	0
+Element03	公孫樹	0	イチョウ
+Element04	橄欖	0	オリーブ
+Element05	加加阿	0
+Element06	杜若	0	カキツバタ
+Element07	梔子	0	クチナシ
+Element08	山茶花	0
+Element09	仙人掌	0	サボテン
+Element10	躑躅	0	ツツジ
+Element11	石南花	0	シャクナゲ
+Element12	鬱金香	0	チューリップ
+Element13	八重葎	0	ヤエムグラ
+Element14	鳳梨	0	パイナップル
+Element15	向日葵	0
+Element16	竜胆	0
+Element17	山葵	0
+Element18	蕨	0
+Element19	金糸雀	1	カナリア
+Element20	木菟	1	ミミズク

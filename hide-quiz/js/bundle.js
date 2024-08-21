@@ -114,7 +114,7 @@ function generateImg() {
             allowTaint: true,
             proxy: true,
             useCORS: true,
-            scale: 2 // 解像度を2倍に設定
+            scale: 1 // 解像度を2倍に設定
         }).then(canvas => {
             imgData = canvas.toDataURL();
             canvasElement.src = imgData;
