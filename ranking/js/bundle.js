@@ -9,7 +9,7 @@ function dataLoad() {
         if (fileExtension !== 'txt') {
             alert("txtファイルのみを選択してください。");
             return; // 不正なファイルの場合は処理を終了する
-        }
+        };
 
         const reader = new FileReader();
 

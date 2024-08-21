@@ -9,7 +9,7 @@ function startRoulette() {
     intervalId = setInterval(rotateNumber, 1);
     $('#startRoulette').addClass('d-none').prop('disabled', true); // Start ボタンを非表示にして無効化する
     $('#stopRoulette').removeClass('d-none');
-}
+};
 
 function stopRoulette() {
     const sameNumber = Number($('#same-number').val());
@@ -30,8 +30,8 @@ function stopRoulette() {
         $('#stopRoulette').prop('disabled', true); // 数字がすべて出たら Stop ボタンを無効化する
         $(document).off("keydown"); // 数字がすべて出たら Space キーのイベントリスナーを削除する
         return; // すべての数字が出た場合は処理を終了する
-    }
-}
+    };
+};
 
 function rotateNumber() {
     minNumber = Number($('#min-number').val());
@@ -47,7 +47,7 @@ function rotateNumber() {
     currentNumber = getRandomNumber();
     $('#current-number').text(String(currentNumber).padStart(2, '0'));
     // ここでアニメーションを適用する
-}
+};
 
 function getRandomNumber() {
     let randomNumber;
@@ -65,7 +65,7 @@ function getRandomNumber() {
     randomNumber = availableNumbers[Math.floor(Math.random() * availableNumbers.length)];
 
     return randomNumber;
-}
+};
 
 
 function resetRoulette() {
@@ -89,7 +89,7 @@ function resetRoulette() {
     $('.already-display').html(String(numbers.length).padStart(2, '0'));
     const sameNumber = Number($('#same-number').val());
     $('.remain-display').html(String(((maxNumber - minNumber + 1) * sameNumber)).padStart(2, '0'));
-}
+};
 
 
 
@@ -98,7 +98,7 @@ document.addEventListener(
     (e) => {
         if (e.keyCode === 13) {
             toggleFullScreen();
-        }
+        };
     },
     false
 );
@@ -110,8 +110,8 @@ function toggleFullScreen() {
         elem.requestFullscreen();
     } else if (document.exitFullscreen) {
         document.exitFullscreen();
-    }
-}
+    };
+};
 
 // Spaceキーのイベントリスナー関数
 function spaceEventListener(e) {
@@ -122,9 +122,9 @@ function spaceEventListener(e) {
             startRoulette(); // ルーレットを開始する
         } else if ($('#stopRoulette').is(':visible')) { // ストップボタンが表示されている場合
             stopRoulette(); // ルーレットを停止する
-        }
-    }
-}
+        };
+    };
+};
 
 // ページ読み込み時にSpaceキーのイベントリスナーを登録する
 $(document).keydown(spaceEventListener);

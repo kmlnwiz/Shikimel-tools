@@ -56,7 +56,7 @@ function getRandomElement() {
     randomElement = Math.floor(Math.random() * rouletteArr.length);
 
     return randomElement;
-}
+};
 
 function resetRoulette() {
 

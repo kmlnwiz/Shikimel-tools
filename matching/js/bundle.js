@@ -20,7 +20,7 @@ function dataLoad() {
         if (fileExtension !== 'txt') {
             alert("txtファイルのみを選択してください。");
             return; // 不正なファイルの場合は処理を終了する
-        }
+        };
 
         const reader = new FileReader();
 
@@ -71,7 +71,7 @@ function processFileData(dataList) {
             fontSize = 'fs-2';
         } else {
             fontSize = 'fs-1'; // Default font size if none of the conditions are met
-        }
+        };
 
         html += `<div class="col px-1 mb-5">
             <div class="card touch-none matching-card card-top-${dataList.data[i][0]} border-primary" style="height:43vh;" data-pair="${dataList.data[i][0].replace('pair', '')}">
@@ -100,7 +100,7 @@ function processFileData(dataList) {
             fontSize = 'fs-2';
         } else {
             fontSize = 'fs-1'; // Default font size if none of the conditions are met
-        }
+        };
 
         html += `<div class="col px-1 mt-4">
             <div class="card touch-none matching-card card-bottom-${dataList.data[i][0]} border-danger" style="height:43vh;">
@@ -176,12 +176,12 @@ function drawLines(linesToConnect) {
             isVisible[line] = previousVisibility[line]; // 前回の表示状態を保持
         } else {
             isVisible[line] = false; // 初回表示時は非表示に設定
-        }
+        };
 
         // 前回表示していた場合、再度表示する
         if (isVisible[line]) {
             $(`.line-pair${line}`).fadeIn();
-        }
+        };
     });
 };
 

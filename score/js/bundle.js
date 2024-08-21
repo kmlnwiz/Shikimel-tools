@@ -200,13 +200,12 @@ $(document).ready(function () {
         });
     });
 
-
     document.addEventListener(
         "keydown",
         (e) => {
             if (e.keyCode === 13) {
                 toggleFullScreen();
-            }
+            };
         },
         false,
     );
@@ -221,8 +220,8 @@ $(document).ready(function () {
                     const value = lastAction.value;
                     // undoの場合は値が1なら-1、値が-1なら1を渡すように修正
                     updateScore(playerId, value, true);
-                }
-            }
+                };
+            };
         },
         false,
     );
@@ -234,8 +233,8 @@ $(document).ready(function () {
             elem.requestFullscreen();
         } else if (document.exitFullscreen) {
             document.exitFullscreen();
-        }
-    }
+        };
+    };
 });
 
 
