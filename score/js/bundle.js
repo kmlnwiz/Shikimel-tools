@@ -23,33 +23,33 @@ function addPlayer() {
                 <div class="card-body pb-0">
                     <h5 class="card-title"><input class="form-control form-control-lg fs-3 fw-bold vertical-text border-0" type="text" value="" placeholder="${playerName}" style="height:15rem;"></h5>
                     <div class="mb-2">
-                        <div id="${playerId}-1" class="text-center h1 fw-bold total-score rule1 d-block" style="font-size:3.5rem;">0</div>
-                        <div id="${playerId}-2" class="text-center h1 fw-bold total-score rule2 d-none" style="font-size:3.5rem;">0</div>
-                        <div id="${playerId}-3" class="text-center h1 fw-bold total-score rule3 d-none" style="font-size:3.5rem;">0</div>
-                        <div id="${playerId}-4" class="text-center h1 fw-bold total-score rule4 d-none" style="font-size:3.5rem;">0</div>
-                        <div id="${playerId}-5" class="text-center h1 fw-bold total-score rule5 d-none" style="font-size:3.5rem;">0</div>
+                        <div id="${playerId}-1" class="text-center h1 fw-bold total-score rule1 d-block" style="font-size:2.75rem;">0</div>
+                        <div id="${playerId}-2" class="text-center h1 fw-bold total-score rule2 d-none" style="font-size:2.75rem;">0</div>
+                        <div id="${playerId}-3" class="text-center h1 fw-bold total-score rule3 d-none" style="font-size:2.75rem;">0</div>
+                        <div id="${playerId}-4" class="text-center h1 fw-bold total-score rule4 d-none" style="font-size:2.75rem;">0</div>
+                        <div id="${playerId}-5" class="text-center h1 fw-bold total-score rule5 d-none" style="font-size:2.75rem;">0</div>
                         <div class="row">
-                        <div class="col pe-1 text-center h2 o-score">0</div>
-                        <div class="col ps-1 text-center h2 x-score">0</div>
+                        <div class="col p-0 pe-1 text-center h2 o-score text-primary">0</div>
+                        <div class="col p-0 ps-1 text-center h2 x-score text-danger">0</div>
                         </div>
-                        <div class="row g-2 mt-0">
-                            <div class="col pe-1">
+                        <div class="row mt-0">
+                            <div class="col p-0 pe-1">
                             <button class="btn btn-primary btn-circle w-100 increment"><i class="bi bi-circle"></i></button>
                             </div>
-                            <div class="col ps-1">
+                            <div class="col p-0 ps-1">
                             <button class="btn btn-danger btn-circle w-100 decrement"><i class="bi bi-x-lg"></i></button>
                             </div>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-4 px-0 ps-1 text-center">
+                            <!--<div class="col-4 px-0 ps-1 text-center">
                                 <input type="checkbox" class="btn-check form-check-input win-player" id="win-player-checkbox-${playerId}">
                                 <label class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center" for="win-player-checkbox-${playerId}"><i class="bi bi-trophy"></i></label>
                             </div>
                             <div class="col-4 px-1 text-center">
                                 <input type="checkbox" class="btn-check form-check-input lose-player" id="lose-player-checkbox-${playerId}">
                                 <label class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center" for="lose-player-checkbox-${playerId}"><i class="bi bi-heartbreak"></i></label>
-                            </div>
-                            <div class="col-4 px-0 pe-1 text-center">
+                            </div>-->
+                            <div class="col-12 px-0 text-center">
                                 <button class="btn btn-outline-warning w-100 delete-player"><i class="bi bi-trash"></i></button>
                             </div>
 
