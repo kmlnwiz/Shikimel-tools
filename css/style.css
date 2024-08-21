@@ -6,8 +6,13 @@
   box-sizing: border-box;
 }
 
+    @font-face {
+        font-family: 'NewRodin-B';
+        src: url('../font/NewRodin-B.ttf') format('truetype');
+    }
+
 body {
-  font-family: 'Helvetica Neue',
+  font-family: 'NewRodin-B','Helvetica Neue',
     'Helvetica',
     'Arial',
     sans-serif;
@@ -406,4 +411,16 @@ div.osero:hover {
 .prefecture:hover {
   fill: #f00;
   /* Hover color */
+}
+
+.outlined-1 {
+  text-shadow:
+    2px 2px 0 #000,
+    /* 縁取りの影（2px 右下） */
+    -2px -2px 0 #000,
+    /* 縁取りの影（2px 左上） */
+    2px -2px 0 #000,
+    /* 縁取りの影（2px 左下） */
+    -2px 2px 0 #000;
+  /* 縁取りの影（2px 右上） */
 }
