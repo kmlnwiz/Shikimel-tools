@@ -63,8 +63,8 @@ function toggleFullScreen() {
         overlayElem.requestFullscreen();
     } else if (document.exitFullscreen) {
         document.exitFullscreen();
-    }
-}
+    };
+};
 
 // Event listener for toggling the visibility of elements
 $(document).on("click", 'div[id^="str_a"], div[id^="str_b"]', function (event) {
@@ -96,14 +96,11 @@ function toggleAll(open) {
         str_a.removeClass('d-none').addClass('d-block');
         $('#open-count').html(escapeHtml($('#open-count').val()));
         $('#opened-count').html(0);
-    }
-}
+    };
+};
 
-// Function to generate an image from the content
 function generateImg() {
-    //$('.blind-1').addClass('d-none').removeClass('d-block');
-    //$('.blind-2').removeClass('d-none').addClass('d-block');
-
+    document.querySelector('#imgDlBtn').addEventListener('click', downloadImg);
     setTimeout(() => {
         const content = document.querySelector('#imgContent');
         const canvasElement = document.querySelector('#imgCanvas');
@@ -117,16 +114,29 @@ function generateImg() {
             allowTaint: true,
             proxy: true,
             useCORS: true,
+            scale: 2 // 解像度を2倍に設定
         }).then(canvas => {
-            const imgData = canvas.toDataURL();
+            imgData = canvas.toDataURL();
             canvasElement.src = imgData;
 
-            //$('.blind-2').addClass('d-none').removeClass('d-block');
-            //$('.blind-1').removeClass('d-none').addClass('d-block');
             $('#imgContent').find('#imgAns').remove();
         });
     }, 200);
 };
+
+function downloadImg() {
+    const link = document.createElement('a');
+    link.href = imgData;
+    link.download = `${document.querySelector("#opened-count").textContent || 'image'}.png`;
+
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+};
+
+$('#modalClose').on('Click', function () {
+    document.querySelector('#imgDlBtn').removeEventListener('click', downloadImg);
+});
 
 // Automatically execute the ready function when the page loads
 $(document).ready(ready);
