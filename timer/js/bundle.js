@@ -3,22 +3,26 @@ let totalTime;
 let timeLeft;
 let isPaused = true;
 const timerText = document.getElementById('timer-text');
+const timerTextMin = document.getElementById('minDisplay');
 let startTime; // 開始時刻を記録する変数を追加
 
 function initializeTimer() {
     totalTime = (Number($('#set-min').val()) * 60 + Number($('#set-sec').val())) * 1000;
     timeLeft = totalTime;
     updateTimerDisplay();
-}
+};
 
 function updateTimerDisplay() {
     const minutesLeft = Math.floor(timeLeft / (60 * 1000));
     const secondsLeft = Math.floor((timeLeft % (60 * 1000)) / 1000);
     const millisecondsLeft = Math.floor((timeLeft % 1000) / 10);
     timerText.innerHTML = `${String(minutesLeft).padStart(2, '0')}:${String(secondsLeft).padStart(2, '0')}<span style="font-size: 0.75em;">.${String(millisecondsLeft).padStart(2, '0')}</span>`;
+
+    timerTextMin.innerHTML = `${String(minutesLeft * 60 + secondsLeft).padStart(4, '0')}.${String(millisecondsLeft).padStart(2, '0')} 秒`;
+
     $('#left-bar').css('width', (timeLeft / totalTime) * 100 + '%');
     $('#left-bar-label').attr('aria-valuenow', (timeLeft / totalTime));
-}
+};
 
 function startTimer() {
     if (isPaused) {
@@ -31,9 +35,9 @@ function startTimer() {
         } else {
             startTime = Date.now() - (totalTime - timeLeft);
             timerInterval = setInterval(updateTimer, 1);
-        }
-    }
-}
+        };
+    };
+};
 
 function updateTimer() {
     const now = Date.now();
@@ -52,8 +56,8 @@ function updateTimer() {
         audio.play();
     } else {
         updateTimerDisplay();
-    }
-}
+    };
+};
 
 function stopTimer() {
     if (!isPaused) {
@@ -61,8 +65,8 @@ function stopTimer() {
         isPaused = true;
         $('#startTimer').removeClass('d-none').prop('disabled', false);
         $('#stopTimer').addClass('d-none');
-    }
-}
+    };
+};
 
 function resetTimer() {
     clearInterval(timerInterval);
@@ -70,7 +74,7 @@ function resetTimer() {
     initializeTimer();
     $('#startTimer').removeClass('d-none').prop('disabled', false);
     $('#stopTimer').addClass('d-none').prop('disabled', false);
-}
+};
 
 document.addEventListener('keydown', function (event) {
     if (event.code === 'Space') {
@@ -79,8 +83,8 @@ document.addEventListener('keydown', function (event) {
             startTimer();
         } else {
             stopTimer();
-        }
-    }
+        };
+    };
 });
 
 // Initialize timer when the document is ready
