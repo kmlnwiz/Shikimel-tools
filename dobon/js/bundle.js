@@ -62,7 +62,7 @@ function processFileData(dataList) {
         } else if (dataList.data[i][1].length > 7) {
             fontSize = 'fs-2';
         } else {
-            fontSize = 'fs-1'; // Default font size if none of the conditions are met
+            fontSize = '5.00'; // Default font size if none of the conditions are met
         };
 
         const isCorrect = dataList.data[i][2] == '0' ? 'correctOption' : 'incorrectOption';
