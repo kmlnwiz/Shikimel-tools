@@ -53,22 +53,22 @@ function processFileData(dataList) {
     }, 0);
     console.log(maxLength);
 
-    let colSize = 'col-2';
-    if (maxLength > 14) {
-        colSize = 'col-12';
-    } else if (maxLength > 10) {
-        colSize = 'col-6';
+    let colSize = 'col-12';
+    if (maxLength > 11) {
+        colSize = 'col-12 col-xl-6';
     } else if (maxLength > 7) {
-        colSize = 'col-4';
+        colSize = 'col-6 col-xl-4';
     } else if (maxLength > 4) {
-        colSize = 'col-3';
+        colSize = 'col-4 col-xl-3';
+    } else if (maxLength > 1) {
+        colSize = 'col-3 col-xl-2';
     };
 
     for (let i = 0; i < dataList.data.length; i++) {
 
         if (dataList.data[i].length == 3) {
             dataList.data[i].push("");
-        }
+        };
 
         dataList.data[i][2] == '1' ? incorrectCount++ : '';
 
@@ -80,16 +80,16 @@ function processFileData(dataList) {
         } else if (dataList.data[i][1].length > 7) {
             fontSize = 'fs-2';
         } else {
-            fontSize = 'fs-1'; // Default font size if none of the conditions are met
+            fontSize = 'fs-1';
         };
 
         const isCorrect = dataList.data[i][2] == '0' ? 'correctOption' : 'incorrectOption';
 
-        html += `<div class="col ${colSize}" style="padding: 0.125rem !important;"><div id="str_a${i}" class="${isCorrect} str-blind blind-2 py-2 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 border-secondary" style="font-size:5.0rem;">${dataList.data[i][1]}</div>`;
+        html += `<div class="col ${colSize}" style="padding: 0.125rem !important;"><div id="str_a${i}" class="${isCorrect} str-blind blind-2 py-3 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 border-secondary" style="font-size:4.00rem;">${dataList.data[i][1]}</div>`;
 
         const bgColor = dataList.data[i][2] == '0' ? 'bg-success' : 'bg-danger';
 
-        html += `<div id="str_b${i}" class="str-blind blind-3 col py-2 m-0 border ${bgColor} text-white fw-bold text-center touch-none rounded-3 d-none border-secondary" style="font-size:5.00rem;">${dataList.data[i][1]}<br><small class="fw-nomal fs-3 opacity-75 fw-bold position-absolute text-center" style="width:${dataList.data[i][3].length * 3}rem; margin-left: -${dataList.data[i][3].length * 1.4}rem !important; margin-top: -1.75rem !important; pointer-events:none;">${dataList.data[i][3] !== "" ? dataList.data[i][3] : "　"}</small></div></div>`;
+        html += `<div id="str_b${i}" class="str-blind blind-3 col py-3 m-0 border ${bgColor} text-white fw-bold text-center touch-none rounded-3 d-none border-secondary" style="font-size:4.00rem;">${dataList.data[i][1]}<br><small class="fw-nomal fs-3 opacity-75 fw-bold position-absolute text-center" style="width:${dataList.data[i][3].length * 3}rem; margin-left: -${dataList.data[i][3].length * 1.4}rem !important; margin-top: -1.40rem !important; pointer-events:none;">${dataList.data[i][3] !== "" ? dataList.data[i][3] : "　"}</small></div></div>`;
     };
 
     if ($('#dobonDisplay').prop('checked')) {
@@ -100,16 +100,6 @@ function processFileData(dataList) {
     $('#content-area').html(html);
 
 };
-
-$(document).on('click', '.memory-card', function () {
-    // クリックされたcard-top-pairのdata-pair属性の値を取得
-    const dataPair = $(this).attr('data-pair');
-    //console.log(dataPair);
-
-    // クリックされた要素の.card-bodyにクラスを追加または削除する
-    $(this).find('.card-body').toggleClass('bg-dark text-opacity');
-});
-
 
 document.addEventListener(
     "keydown",
@@ -125,11 +115,27 @@ function toggleFullScreen() {
     const elem = document.getElementById("Content");
 
     if (!document.fullscreenElement) {
-        elem.requestFullscreen();
+        elem.requestFullscreen().then(() => {
+            document.documentElement.style.overflow = 'auto';
+            document.body.style.overflow = 'auto';
+            elem.style.overflow = 'auto';
+            elem.style.height = '100vh';
+        }).catch(err => {
+            console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
     } else if (document.exitFullscreen) {
-        document.exitFullscreen();
+        document.exitFullscreen().then(() => {
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+            elem.style.overflow = '';
+            elem.style.height = '';
+        }).catch(err => {
+            console.error(`Error attempting to exit full-screen mode: ${err.message} (${err.name})`);
+        });
     };
 };
+
+
 
 $(document).on("click", 'div[id^="str_a"], div[id^="str_b"]', function (event) {
     const isA = event.target.id.startsWith("str_a");

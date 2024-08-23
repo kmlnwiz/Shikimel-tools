@@ -1,4 +1,3 @@
-// Main function that runs on page load
 function ready() {
     let data = [{
         question: $('#question-text').val() !== "" ? escapeHtml($('#question-text').val()) : escapeHtml($('#question-text').attr('placeholder'))
@@ -6,7 +5,6 @@ function ready() {
     output(data);
 };
 
-// Function to generate HTML content based on the input data
 function output(array) {
     console.log(array);
 
@@ -35,7 +33,6 @@ function output(array) {
     $("#opened-count").html(0);
 };
 
-// Function to escape HTML characters
 function escapeHtml(str) {
     return str.replace(/[&<>"']/g, match => ({
         '&': '&amp;',
@@ -46,27 +43,36 @@ function escapeHtml(str) {
     }[match]));
 }
 
-// Event listener for toggling full-screen mode with the Enter key
 document.addEventListener("keydown", (e) => {
     if (e.keyCode === 13) {
         toggleFullScreen();
     }
 }, false);
 
-// Function to toggle full-screen mode
 function toggleFullScreen() {
-    const elem = document.getElementById("contentArea");
-    const overlayElem = document.getElementById("overlay");
+    const elem = document.getElementById("Content");
 
     if (!document.fullscreenElement) {
-        elem.requestFullscreen();
-        overlayElem.requestFullscreen();
+        elem.requestFullscreen().then(() => {
+            document.documentElement.style.overflow = 'auto';
+            document.body.style.overflow = 'auto';
+            elem.style.overflow = 'auto';
+            elem.style.height = '100vh';
+        }).catch(err => {
+            console.error(`Error attempting to enable full-screen mode: ${err.message} (${err.name})`);
+        });
     } else if (document.exitFullscreen) {
-        document.exitFullscreen();
+        document.exitFullscreen().then(() => {
+            document.documentElement.style.overflow = '';
+            document.body.style.overflow = '';
+            elem.style.overflow = '';
+            elem.style.height = '';
+        }).catch(err => {
+            console.error(`Error attempting to exit full-screen mode: ${err.message} (${err.name})`);
+        });
     };
 };
 
-// Event listener for toggling the visibility of elements
 $(document).on("click", 'div[id^="str_a"], div[id^="str_b"]', function (event) {
     const isA = event.target.id.startsWith("str_a");
     const str_no = event.target.id.replace(isA ? "str_a" : "str_b", "");
@@ -81,7 +87,6 @@ $(document).on("click", 'div[id^="str_a"], div[id^="str_b"]', function (event) {
     $('#opened-count').html(isA ? $("#open-count-max").html() - open_count + 1 : $("#open-count-max").html() - open_count - 1);
 });
 
-// Function to toggle all elements open or closed
 function toggleAll(open) {
     const str_a = $(`div[id^="str_a"]`);
     const str_b = $(`div[id^="str_b"]`);
@@ -138,7 +143,6 @@ $('#modalClose').on('Click', function () {
     document.querySelector('#imgDlBtn').removeEventListener('click', downloadImg);
 });
 
-// Automatically execute the ready function when the page loads
 $(document).ready(ready);
 
 function lengthCount() {

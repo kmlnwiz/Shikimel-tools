@@ -46,7 +46,6 @@ function rotateNumber() {
     }
     currentNumber = getRandomNumber();
     $('#current-number').text(String(currentNumber).padStart(2, '0'));
-    // ここでアニメーションを適用する
 };
 
 function getRandomNumber() {
@@ -164,5 +163,5 @@ $(document).ready(function () {
         $('.max-display').text(String(max).padStart(2, '0'));
         $('.same-display').text(String(same).padStart(2, '0'));
         $('.remain-display').text(String((max - min) * same + 1).padStart(2, '0'));
-    }
+    };
 });

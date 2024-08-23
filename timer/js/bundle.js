@@ -4,7 +4,7 @@ let timeLeft;
 let isPaused = true;
 const timerText = document.getElementById('timer-text');
 const timerTextMin = document.getElementById('minDisplay');
-let startTime; // 開始時刻を記録する変数を追加
+let startTime; // 開始時刻を記録する変数
 
 function initializeTimer() {
     totalTime = (Number($('#set-min').val()) * 60 + Number($('#set-sec').val())) * 1000;
@@ -87,7 +87,6 @@ document.addEventListener('keydown', function (event) {
     };
 });
 
-// Initialize timer when the document is ready
 $(document).ready(function () {
     initializeTimer();
 });
