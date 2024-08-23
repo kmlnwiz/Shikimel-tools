@@ -19,38 +19,39 @@ function addPlayer() {
     const playerCard = `
         <div id="${playerId}" class="col player-card px-1">
             <div class="card">
-
                 <div class="card-body pb-0">
-                    <h5 class="card-title"><input class="form-control form-control-lg fs-3 fw-bold vertical-text border-0" type="text" value="" placeholder="${playerName}" style="height:15rem;"></h5>
-                    <div class="mb-2">
-                        <div id="${playerId}-1" class="text-center h1 fw-bold total-score rule1 d-block" style="font-size:2.75rem;">0</div>
-                        <div id="${playerId}-2" class="text-center h1 fw-bold total-score rule2 d-none" style="font-size:2.75rem;">0</div>
-                        <div id="${playerId}-3" class="text-center h1 fw-bold total-score rule3 d-none" style="font-size:2.75rem;">0</div>
-                        <div id="${playerId}-4" class="text-center h1 fw-bold total-score rule4 d-none" style="font-size:2.75rem;">0</div>
-                        <div id="${playerId}-5" class="text-center h1 fw-bold total-score rule5 d-none" style="font-size:2.75rem;">0</div>
-                        <div class="row">
-                        <div class="col p-0 pe-1 text-center h3 o-score text-primary">0</div>
-                        <div class="col p-0 ps-1 text-center h3 x-score text-danger">0</div>
+                <div class="col-12 p-0 text-center h3 text-primary text-nowrap py-1"><span id="${playerId}-rank" class="rank">1</span></div>
                         </div>
-                        <div class="row mt-0">
+                    <h4 class="card-title"><input class="form-control form-control-lg fs-3 fw-bold vertical-text border-0" type="text" value="" placeholder="${playerName}" style="height:15rem;"></h4>
+                    <div class="mb-2">
+                        <div id="${playerId}-1" class="text-center h1 fw-bold total-score text-nowrap py-1 rule1 d-block" style="font-size:2.75rem;">0</div>
+                        <div id="${playerId}-2" class="text-center h1 fw-bold total-score text-nowrap py-1 rule2 d-none" style="font-size:2.75rem;">0</div>
+                        <div id="${playerId}-3" class="text-center h1 fw-bold total-score text-nowrap py-1 rule3 d-none" style="font-size:2.75rem;">0</div>
+                        <div id="${playerId}-4" class="text-center h1 fw-bold total-score text-nowrap py-1 rule4 d-none" style="font-size:2.75rem;">0</div>
+                        <div id="${playerId}-5" class="text-center h1 fw-bold total-score text-nowrap py-1 rule5 d-none" style="font-size:2.75rem;">0</div>
+                        <div class="row g-0 px-1">
+                        <div class="col-12 p-0 text-center h3 text-primary text-nowrap py-1"><i class="bi bi-circle pe-2"></i><span id="${playerId}-o" class="o-score">0</span></div>
+                        <div class="col-12 p-0 text-center h3 text-danger text-nowrap py-1"><i class="bi bi-x-lg pe-2"></i><span id="${playerId}-x" class="x-score">0</span></div>
+                        </div>
+                        <div class="row g-0 px-1 mt-0">
                             <div class="col p-0 pe-1">
-                            <button class="btn btn-primary btn-circle w-100 increment"><i class="bi bi-circle"></i></button>
+                            <button class="btn btn-primary btn-circle w-100 py-2 increment"><i class="bi bi-circle"></i></button>
                             </div>
                             <div class="col p-0 ps-1">
-                            <button class="btn btn-danger btn-circle w-100 decrement"><i class="bi bi-x-lg"></i></button>
+                            <button class="btn btn-danger btn-circle w-100 py-2 decrement"><i class="bi bi-x-lg"></i></button>
                             </div>
                         </div>
-                        <div class="row mt-2">
+                        <div class="row g-0 px-1 mt-2">
                             <!--<div class="col-4 px-0 ps-1 text-center">
                                 <input type="checkbox" class="btn-check form-check-input win-player" id="win-player-checkbox-${playerId}">
-                                <label class="btn btn-outline-primary w-100 d-flex align-items-center justify-content-center" for="win-player-checkbox-${playerId}"><i class="bi bi-trophy"></i></label>
+                                <label class="btn btn-outline-primary w-100 py-1 d-flex align-items-center justify-content-center" for="win-player-checkbox-${playerId}"><i class="bi bi-trophy"></i></label>
                             </div>
                             <div class="col-4 px-1 text-center">
                                 <input type="checkbox" class="btn-check form-check-input lose-player" id="lose-player-checkbox-${playerId}">
-                                <label class="btn btn-outline-danger w-100 d-flex align-items-center justify-content-center" for="lose-player-checkbox-${playerId}"><i class="bi bi-heartbreak"></i></label>
+                                <label class="btn btn-outline-danger w-100 py-1 d-flex align-items-center justify-content-center" for="lose-player-checkbox-${playerId}"><i class="bi bi-heartbreak"></i></label>
                             </div>-->
                             <div class="col-12 px-0 text-center">
-                                <button class="btn btn-outline-warning w-100 delete-player"><i class="bi bi-trash"></i></button>
+                                <button class="btn btn-outline-warning w-100 py-1 delete-player"><i class="bi bi-trash"></i></button>
                             </div>
 
                         </div>
@@ -68,6 +69,7 @@ function addPlayer() {
     $(`.rule${id}`).removeClass('d-none').addClass('d-block');
 
     // 他のイベントリスナーや初期化の処理などもここに記述する
+    rankCalc(id);
 }
 
 $(document).ready(function () {
@@ -87,6 +89,8 @@ $(document).ready(function () {
                 $(this).remove(); // 親のプレイヤーカードを削除
                 updateButtons(); // ボタンの状態を更新
                 playerCount--;
+                const id = $('[name="options-rule"]:checked').attr('id').slice(-1);
+                rankCalc(id);
             });
         });
     });
@@ -105,7 +109,8 @@ function updateScore(playerId, value, pointSet, isUndo = false) {
             value,
             pointSet
         }); // 操作を履歴に追加
-    }
+    };
+    console.log(actionStack);
 
     // 点数を更新
     if (!isUndo) {
@@ -126,6 +131,7 @@ function updateScore(playerId, value, pointSet, isUndo = false) {
     // 表示を更新
     oScoreElem.text(oScore);
     xScoreElem.text(xScore);
+
     for (let i = 0; i < 5; i++) {
         const totalScoreElem = $(`#${playerId} .rule${i + 1}`)
         i === 0 ? totalScore = oScore : '';
@@ -135,6 +141,9 @@ function updateScore(playerId, value, pointSet, isUndo = false) {
         //i === 4 ? totalScore = oScore - xScore : '';
         totalScoreElem.text(totalScore);
     };
+
+    const id = $('[name="options-rule"]:checked').attr('id').slice(-1);
+    rankCalc(id);
 
     updateButtons();
 }
@@ -228,7 +237,7 @@ $(document).ready(function () {
                     const value = lastAction.value;
                     // undoの場合は値が1なら-1、値が-1なら1を渡すように修正
                     const pointSet = lastAction.pointSet;
-                    updateScore(playerId, value, true);
+                    updateScore(playerId, value, pointSet, true);
                 };
             };
         },
@@ -250,4 +259,84 @@ $(document).ready(function () {
 function toggleRule(id) {
     $(`.total-score`).removeClass('d-block').addClass('d-none');
     $(`.rule${id}`).removeClass('d-none').addClass('d-block');
+
+    rankCalc(id)
+};
+
+function rankCalc(id) {
+
+    const rankArray = [];
+    for (let i = 0; i <= playerCount; i++) {
+        const targetId = [`player${i + 1}-${id}`, `player${i + 1}-o`, `player${i + 1}-x`];
+        const elementTotal = document.getElementById(targetId[0]);
+        const elementPlus = document.getElementById(targetId[1]);
+        const elementMinus = document.getElementById(targetId[2]);
+
+        // 要素が存在する場合、そのテキストを取得
+        if (elementTotal) {
+            rankArray.push({
+                playerId: `player${i + 1}`,
+                plusPoint: Number(elementPlus.textContent),
+                minusPoint: Number(elementMinus.textContent),
+                totalPoint: Number(elementTotal.textContent)
+            });
+        };
+    };
+
+    console.log(rankArray);
+
+    // ソートの条件を追加
+    const sortedPlayers = rankArray.sort((a, b) => {
+        if (b.totalPoint !== a.totalPoint) {
+            return b.totalPoint - a.totalPoint;  // totalPointが大きい方を上位
+        } else if (b.plusPoint !== a.plusPoint) {
+            return b.plusPoint - a.plusPoint;  // plusPointが大きい方を上位
+        } else {
+            return a.minusPoint - b.minusPoint;  // minusPointが小さい方を上位
+        };
+    });
+
+    let currentRank = 1;
+    let previousTotalPoint = sortedPlayers[0]?.totalPoint;
+    let previousPlusPoint = sortedPlayers[0]?.plusPoint;
+    let previousMinusPoint = sortedPlayers[0]?.minusPoint;
+    let skippedRanks = 0;
+
+    for (let i = 0; i < sortedPlayers.length; i++) {
+        const targetPlayerId = sortedPlayers[i].playerId;
+
+        if (i > 0) {
+            const player = sortedPlayers[i];
+
+            // totalPoint, plusPoint, minusPointが全て異なる場合に順位を更新
+            if (player.totalPoint !== previousTotalPoint ||
+                player.plusPoint !== previousPlusPoint ||
+                player.minusPoint !== previousMinusPoint) {
+                currentRank += skippedRanks + 1;
+                skippedRanks = 0;
+            } else {
+                skippedRanks++;
+            };
+
+            previousTotalPoint = player.totalPoint;
+            previousPlusPoint = player.plusPoint;
+            previousMinusPoint = player.minusPoint;
+        };
+
+        $(`#${targetPlayerId}-rank`).text(getOrdinalSuffix(currentRank));
+    };
+};
+
+function getOrdinalSuffix(number) {
+    const suffixes = ["th", "st", "nd", "rd"];
+    const remainder10 = number % 10;
+    const remainder100 = number % 100;
+
+    if (remainder100 >= 11 && remainder100 <= 13) {
+        return number + "th";
+    } else if (remainder10 >= 1 && remainder10 <= 3) {
+        return number + suffixes[remainder10];
+    } else {
+        return number + "th";
+    };
 };
