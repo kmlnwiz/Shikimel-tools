@@ -53,15 +53,15 @@ function processFileData(dataList) {
     }, 0);
     console.log(maxLength);
 
-    let colSize = 'col-12';
+    let colSize = 'col-3 col-md-3 col-xxl-2';
     if (maxLength > 11) {
-        colSize = 'col-12 col-xl-6';
+        colSize = 'col-12 col-md-12 col-xxl-6';
     } else if (maxLength > 7) {
-        colSize = 'col-6 col-xl-4';
+        colSize = 'col-12 col-md-6 col-xxl-4';
     } else if (maxLength > 4) {
-        colSize = 'col-4 col-xl-3';
+        colSize = 'col-6 col-md-4 col-xxl-3';
     } else if (maxLength > 1) {
-        colSize = 'col-3 col-xl-2';
+        colSize = 'col-4 col-md-3 col-xxl-2';
     };
 
     for (let i = 0; i < dataList.data.length; i++) {
@@ -85,11 +85,11 @@ function processFileData(dataList) {
 
         const isCorrect = dataList.data[i][2] == '0' ? 'correctOption' : 'incorrectOption';
 
-        html += `<div class="col ${colSize}" style="padding: 0.125rem !important;"><div id="str_a${i}" class="${isCorrect} str-blind blind-2 py-3 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 border-secondary" style="font-size:4.00rem;">${dataList.data[i][1]}</div>`;
+        html += `<div class="col ${colSize}" style="padding: 0.125rem !important;"><div id="str_a${i}" class="${isCorrect} str-blind blind-2 py-3 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 border-secondary" style="font-size:4.00rem;">${dataList.data[i][1]}<br><small class="fw-nomal fs-3 opacity-50 fw-bold position-absolute text-center" style="width:${String(i).length * 2.8}rem; margin-left: -${String(i).length * 1.40}rem !important; margin-top: -7.10rem !important; pointer-events:none;">${i + 1}</small></div>`;
 
         const bgColor = dataList.data[i][2] == '0' ? 'bg-success' : 'bg-danger';
 
-        html += `<div id="str_b${i}" class="str-blind blind-3 col py-3 m-0 border ${bgColor} text-white fw-bold text-center touch-none rounded-3 d-none border-secondary" style="font-size:4.00rem;">${dataList.data[i][1]}<br><small class="fw-nomal fs-3 opacity-75 fw-bold position-absolute text-center" style="width:${dataList.data[i][3].length * 3}rem; margin-left: -${dataList.data[i][3].length * 1.4}rem !important; margin-top: -1.40rem !important; pointer-events:none;">${dataList.data[i][3] !== "" ? dataList.data[i][3] : "　"}</small></div></div>`;
+        html += `<div id="str_b${i}" class="str-blind blind-3 col py-3 m-0 border ${bgColor} text-white fw-bold text-center touch-none rounded-3 d-none border-secondary" style="font-size:4.00rem;">${dataList.data[i][1]}<br><small class="fw-nomal fs-3 opacity-75 fw-bold position-absolute text-center" style="width:${dataList.data[i][3].length * 2.8}rem; margin-left: -${dataList.data[i][3].length * 1.40}rem !important; margin-top: -1.40rem !important; pointer-events:none;">${dataList.data[i][3] !== "" ? dataList.data[i][3] : "　"}</small><small class="fw-nomal fs-3 opacity-75 fw-bold position-absolute text-center" style="width:3rem; margin-left: -1.45rem !important; margin-top: -7.10rem !important; pointer-events:none;">${i + 1}</small></div></div>`;
     };
 
     if ($('#dobonDisplay').prop('checked')) {
