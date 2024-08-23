@@ -75,9 +75,9 @@ function processFileData(dataList) {
     };
 
     if ($('#dobonDisplay').prop('checked')) {
-        $('#content-title').html(`${dataList.title} （ドボン数：${incorrectCount}）`);
+        $('#content-title').html(`${dataList.title} （ドボン数：${incorrectCount}/${dataList.data.length}）`);
     } else {
-        $('#content-title').html(dataList.title);
+        $('#content-title').html(`${dataList.title} （選択肢数：${dataList.data.length}）`);
     };
     $('#content-area').html(html);
 
