@@ -93,64 +93,67 @@
             </div>
 
             <div class="row g-1 mt-3">
-                <div class="col-12 col-md-6 pe-1">
-                    <div class="mb-1">
-                        <input class="form-control" type="file" id="formFile">
+                <button for="inputTextarea1" class="btn btn-lg btn-outline-dark d-inline-block w-100 mb-1" data-bs-toggle="collapse" data-bs-target="#collapseQestion" aria-expanded="false" aria-controls="collapseQestion">問題を表示/非表示</button>
+
+                <div class="collapse my-1 row g-0" id="collapseQestion">
+                    <div class="col-12 col-md-6 pe-1">
+                        <div class="mb-1">
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
+                    </div>
+                    <div class="col-12 col-md-6 pe-1">
+                        <div class="mb-1">
+                            <button class="btn btn-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocs" aria-expanded="false" aria-controls="collapseDocs">
+                                ファイルの仕様書
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="collapse" id="collapseDocs">
+                        <div class="card card-body">
+                            <div class="mb-3">
+                                <label for="TextAreaDocs" class="form-label">テキストファイルの形式</label>
+                                <textarea class="form-control" id="TextAreaDocs" rows="21" readonly></textarea>
+                            </div>
+                            <hr>
+                            全ての要素はタブ（\t）で区切られています。全半角スペースではないので注意してください。
+                            <br>1行目：タイトルを入力、titleは変更・削除しないでください。
+                            <br><small class="text-muted">title/タブ/タイトル</small>
+                            <br>2行目～：要素を入力、pairNは変更・削除しないでください。一つ目の要素が上段、二つ目の要素が下段に並びます。
+                            <br><small class="text-muted">pairN/タブ/要素1/タブ/要素2</small>
+                            <br>対応できる要素のペア数は1～20です。
+                            <br>対応ファイル形式は「.txt」のみです。
+                            <br>下記ボタンよりテンプレートファイルをDLすることができます。
+                            <div class="my-1 text-center">
+                                <button class="btn btn-outline-indigo w-75" id="temp-dl" autocomplete="off">テンプレートファイルDL</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-check my-2">
+                        <input class="form-check-input" type="checkbox" value="" id="setRandom" checked>
+                        <label class="form-check-label" for="setRandom">
+                            上段もランダム表示にする。
+                        </label>
                     </div>
                 </div>
-                <div class="col-12 col-md-6 pe-1">
-                    <div class="mb-1">
-                        <button class="btn btn-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocs" aria-expanded="false" aria-controls="collapseDocs">
-                            ファイルの仕様書
-                        </button>
-                    </div>
+
+                <div class="text-center my-3">
+                    <button class="btn btn-lg btn-indigo w-75" onClick="dataLoad()">設定を適用する</button>
                 </div>
-            </div>
 
-            <div class="collapse" id="collapseDocs">
-                <div class="card card-body">
-                    <div class="mb-3">
-                        <label for="TextAreaDocs" class="form-label">テキストファイルの形式</label>
-                        <textarea class="form-control" id="TextAreaDocs" rows="21" readonly></textarea>
+                <hr>
+
+                <div id="Content" class="bg-light rounded py-2 my-3 px-2">
+                    <div id="content-title" class="h1 fw-bold border-bottom w-100"></div>
+                    <div id="content-area" class="row g-0 row-cols-xl-20 justify-content-center">
+
                     </div>
-                    <hr>
-                    全ての要素はタブ（\t）で区切られています。全半角スペースではないので注意してください。
-                    <br>1行目：タイトルを入力、titleは変更・削除しないでください。
-                    <br><small class="text-muted">title/タブ/タイトル</small>
-                    <br>2行目～：要素を入力、pairNは変更・削除しないでください。一つ目の要素が上段、二つ目の要素が下段に並びます。
-                    <br><small class="text-muted">pairN/タブ/要素1/タブ/要素2</small>
-                    <br>対応できる要素のペア数は1～20です。
-                    <br>対応ファイル形式は「.txt」のみです。
-                    <br>下記ボタンよりテンプレートファイルをDLすることができます。
-                    <div class="my-1 text-center">
-                        <button class="btn btn-outline-indigo w-75" id="temp-dl" autocomplete="off">テンプレートファイルDL</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="form-check my-2">
-                <input class="form-check-input" type="checkbox" value="" id="setRandom" checked >
-                <label class="form-check-label" for="setRandom">
-                    上段もランダム表示にする。
-                </label>
-            </div>
-
-            <div class="text-center my-3">
-                <button class="btn btn-lg btn-indigo w-75" onClick="dataLoad()">設定を適用する</button>
-            </div>
-
-            <hr>
-
-            <div id="Content" class="bg-light rounded py-2 my-3 px-2">
-                <div id="content-title" class="h1 fw-bold border-bottom w-100"></div>
-                <div id="content-area" class="row g-0 row-cols-xl-20 justify-content-center">
+                    <div id="canvas-area"></div>
 
                 </div>
-                <div id="canvas-area"></div>
 
-            </div>
-
-            <!--<div class="page m-2 mb-5 btn-group position-fixed bottom-0 end-0 rounded-1 bg-white" role="group" aria-label="Basic outlined example">
+                <!--<div class="page m-2 mb-5 btn-group position-fixed bottom-0 end-0 rounded-1 bg-white" role="group" aria-label="Basic outlined example">
                 <button type="button" id="pagetop" class="pagetop btn btn-outline-secondary page-item"><i class="page-item h5 bi bi-caret-up"></i></button>
                 <button type="button" id="pagebottom" class="pagebottom btn btn-outline-secondary page-item"><i class="page-item h5 bi bi-caret-down"></i></button>
             </div>-->

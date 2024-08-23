@@ -94,54 +94,57 @@
             </div>
 
             <div class="row g-1 mt-3">
-                <div class="col-12 col-md-6 pe-1">
-                    <div class="mb-1">
-                        <input class="form-control" type="file" id="formFile">
-                    </div>
-                </div>
-                <div class="col-12 col-md-6 pe-1">
-                    <div class="mb-1">
-                        <button class="btn btn-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocs" aria-expanded="false" aria-controls="collapseDocs">
-                            ファイルの仕様書
-                        </button>
-                    </div>
-                </div>
-            </div>
+                <button for="inputTextarea1" class="btn btn-lg btn-outline-dark d-inline-block w-100 mb-1" data-bs-toggle="collapse" data-bs-target="#collapseQestion" aria-expanded="false" aria-controls="collapseQestion">問題を表示/非表示</button>
 
-            <div class="collapse" id="collapseDocs">
-                <div class="card card-body">
-                    <div class="mb-3">
-                        <label for="TextAreaDocs" class="form-label">テキストファイルの形式</label>
-                        <textarea class="form-control" id="TextAreaDocs" rows="21" readonly></textarea>
+                <div class="collapse my-1 row g-0" id="collapseQestion">
+                <div class="col-12 col-md-6 pe-1">
+                        <div class="mb-1">
+                            <input class="form-control" type="file" id="formFile">
+                        </div>
                     </div>
-                    <hr>
-                    全ての要素はタブ（\t）で区切られています。全半角スペースではないので注意してください。
-                    <br>1行目：タイトルを入力、titleは変更・削除しないでください。
-                    <br><small class="text-muted">title/タブ/タイトル</small>
-                    <br>2行目～：要素を入力、ElementNは変更・削除しないでください。
-                    <br>要素数の上限はありません。
-                    <br><small class="text-muted">ElementN/タブ/要素/タブ/正誤判定/タブ/解説</small>
-                    <br>正誤判定の箇所に半角[0]で正解、[1]を入力することで誤答の設定ができます。
-                    <br>解説は空白でも問題ありませんが、直前のタブは削除しないでください。
-                    <br>対応ファイル形式は「.txt」のみです。
-                    <br>下記ボタンよりテンプレートファイルをDLすることができます。
-                    <div class="my-1 text-center">
-                        <button class="btn btn-outline-indigo w-75" id="temp-dl" autocomplete="off">テンプレートファイルDL</button>
+                    <div class="col-12 col-md-6 ps-1">
+                        <div class="mb-1">
+                            <button class="btn btn-secondary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#collapseDocs" aria-expanded="false" aria-controls="collapseDocs">
+                                ファイルの仕様書
+                            </button>
+                        </div>
+                    </div>
+
+                <div class="collapse" id="collapseDocs">
+                    <div class="card card-body">
+                        <div class="mb-3">
+                            <label for="TextAreaDocs" class="form-label">テキストファイルの形式</label>
+                            <textarea class="form-control" id="TextAreaDocs" rows="21" readonly></textarea>
+                        </div>
+                        <hr>
+                        全ての要素はタブ（\t）で区切られています。全半角スペースではないので注意してください。
+                        <br>1行目：タイトルを入力、titleは変更・削除しないでください。
+                        <br><small class="text-muted">title/タブ/タイトル</small>
+                        <br>2行目～：要素を入力、ElementNは変更・削除しないでください。
+                        <br>要素数の上限はありません。
+                        <br><small class="text-muted">ElementN/タブ/要素/タブ/正誤判定/タブ/解説</small>
+                        <br>正誤判定の箇所に半角[0]で正解、[1]を入力することで誤答の設定ができます。
+                        <br>解説は空白でも問題ありませんが、直前のタブは削除しないでください。
+                        <br>対応ファイル形式は「.txt」のみです。
+                        <br>下記ボタンよりテンプレートファイルをDLすることができます。
+                        <div class="my-1 text-center">
+                            <button class="btn btn-outline-indigo w-75" id="temp-dl" autocomplete="off">テンプレートファイルDL</button>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="form-check my-2">
-                <input class="form-check-input" type="checkbox" value="" id="setRandom" checked >
-                <label class="form-check-label" for="setRandom">
-                    ランダム表示にする。
-                </label>
-            </div>
-            <div class="form-check my-2">
-                <input class="form-check-input" type="checkbox" value="" id="dobonDisplay" checked >
-                <label class="form-check-label" for="dobonDisplay">
-                    ドボン数を表示する。
-                </label>
+                <div class="form-check my-2">
+                    <input class="form-check-input" type="checkbox" value="" id="setRandom" checked>
+                    <label class="form-check-label" for="setRandom">
+                        ランダム表示にする。
+                    </label>
+                </div>
+                <div class="form-check my-2">
+                    <input class="form-check-input" type="checkbox" value="" id="dobonDisplay" checked>
+                    <label class="form-check-label" for="dobonDisplay">
+                        ドボン数を表示する。
+                    </label>
+                </div>
             </div>
 
             <div class="text-center my-3">
@@ -152,7 +155,7 @@
 
             <div id="Content" class="bg-light rounded py-2 my-3 px-2">
                 <div id="content-title" class="h1 fw-bold border-bottom w-100"></div>
-                <div id="content-area" class="row g-0 row-cols-1 row-cols-lg-2 row-cols-xl-3 justify-content-center">
+                <div id="content-area" class="row g-0 justify-content-center">
 
                 </div>
                 <div id="canvas-area"></div>

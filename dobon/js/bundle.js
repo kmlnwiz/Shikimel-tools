@@ -46,6 +46,24 @@ function processFileData(dataList) {
     };
     console.log(dataList);
 
+
+    const maxLength = dataList.data.reduce((max, item) => {
+        const length = item[1].length;
+        return Math.max(max, length);
+    }, 0);
+    console.log(maxLength);
+
+    let colSize = 'col-2';
+    if (maxLength > 14) {
+        colSize = 'col-12';
+    } else if (maxLength > 10) {
+        colSize = 'col-6';
+    } else if (maxLength > 7) {
+        colSize = 'col-4';
+    } else if (maxLength > 4) {
+        colSize = 'col-3';
+    };
+
     for (let i = 0; i < dataList.data.length; i++) {
 
         if (dataList.data[i].length == 3) {
@@ -62,16 +80,16 @@ function processFileData(dataList) {
         } else if (dataList.data[i][1].length > 7) {
             fontSize = 'fs-2';
         } else {
-            fontSize = '5.00'; // Default font size if none of the conditions are met
+            fontSize = 'fs-1'; // Default font size if none of the conditions are met
         };
 
         const isCorrect = dataList.data[i][2] == '0' ? 'correctOption' : 'incorrectOption';
 
-        html += `<div class="col" style="padding: 0.125rem !important;"><div id="str_a${i}" class="${isCorrect} str-blind blind-2 py-4 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 border-secondary" style="font-size:5.0rem;">${dataList.data[i][1]}</div>`;
+        html += `<div class="col ${colSize}" style="padding: 0.125rem !important;"><div id="str_a${i}" class="${isCorrect} str-blind blind-2 py-2 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 border-secondary" style="font-size:5.0rem;">${dataList.data[i][1]}</div>`;
 
         const bgColor = dataList.data[i][2] == '0' ? 'bg-success' : 'bg-danger';
 
-        html += `<div id="str_b${i}" class="str-blind blind-3 col py-4 m-0 border ${bgColor} text-white fw-bold text-center touch-none rounded-3 d-none border-secondary" style="font-size:5.00rem;">${dataList.data[i][1]}<br><small class="fw-nomal fs-3 opacity-75 fw-bold position-absolute text-center" style="width:${dataList.data[i][3].length * 3}rem; margin-left: -${dataList.data[i][3].length * 1.4}rem !important; margin-top: -0.75rem !important; pointer-events:none;">${dataList.data[i][3] !== "" ? dataList.data[i][3] : "　"}</small></div></div>`;
+        html += `<div id="str_b${i}" class="str-blind blind-3 col py-2 m-0 border ${bgColor} text-white fw-bold text-center touch-none rounded-3 d-none border-secondary" style="font-size:5.00rem;">${dataList.data[i][1]}<br><small class="fw-nomal fs-3 opacity-75 fw-bold position-absolute text-center" style="width:${dataList.data[i][3].length * 3}rem; margin-left: -${dataList.data[i][3].length * 1.4}rem !important; margin-top: -1.75rem !important; pointer-events:none;">${dataList.data[i][3] !== "" ? dataList.data[i][3] : "　"}</small></div></div>`;
     };
 
     if ($('#dobonDisplay').prop('checked')) {
