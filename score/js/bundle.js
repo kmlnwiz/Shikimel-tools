@@ -8,7 +8,21 @@ let actionStack = []; // 一つの操作履歴を使いまわす
 function updateButtons() {
     $('#addPlayerBtn').prop('disabled', addBtnDisabled);
     $('#undoBtn').prop('disabled', actionStack.length === 0);
-}
+
+    const id = $('[name="options-rule"]:checked').attr('id').slice(-1);
+    rankCalc(id);
+    toggleRankDisplay();
+};
+
+function toggleRankDisplay() {
+    const onRankDisplay = $('#rankDisplay:checked').prop('checked');
+    $(`.rank`).removeClass('d-block').addClass('d-none');
+    if (onRankDisplay) {
+        $(`.onRankDisplay`).removeClass('d-none').addClass('d-block');
+    } else {
+        $(`.offRankDisplay`).removeClass('d-none').addClass('d-block');
+    };
+};
 
 function addPlayer() {
     if (playerCount >= 20) return;
@@ -20,20 +34,21 @@ function addPlayer() {
         <div id="${playerId}" class="col player-card px-1">
             <div class="card">
                 <div class="card-body pb-0">
-                <div class="col-12 p-0 text-center h3 text-primary text-nowrap py-1"><span id="${playerId}-rank" class="rank">1</span></div>
+                <div id="${playerId}-rank" class="col-12 p-0 text-center h4 text-primary text-nowrap py-1 bg-indigo text-white rounded-pill onRankDisplay rank d-none">1st</div>
+                <div id="" class="col-12 p-0 text-center h4 text-primary text-nowrap py-1 bg-indigo text-white rounded-pill offRankDisplay rank">＊＊＊</div>
                         </div>
-                    <h4 class="card-title"><input class="form-control form-control-lg fs-3 fw-bold vertical-text border-0" type="text" value="" placeholder="${playerName}" style="height:15rem;"></h4>
+                    <h4 class="card-title g-0 px-2"><input class="form-control form-control-lg fs-3 fw-bold vertical-text border-0" type="text" value="" placeholder="${playerName}" style="height:15rem;"></h4>
                     <div class="mb-2">
                         <div id="${playerId}-1" class="text-center h1 fw-bold total-score text-nowrap py-1 rule1 d-block" style="font-size:2.75rem;">0</div>
                         <div id="${playerId}-2" class="text-center h1 fw-bold total-score text-nowrap py-1 rule2 d-none" style="font-size:2.75rem;">0</div>
                         <div id="${playerId}-3" class="text-center h1 fw-bold total-score text-nowrap py-1 rule3 d-none" style="font-size:2.75rem;">0</div>
                         <div id="${playerId}-4" class="text-center h1 fw-bold total-score text-nowrap py-1 rule4 d-none" style="font-size:2.75rem;">0</div>
                         <div id="${playerId}-5" class="text-center h1 fw-bold total-score text-nowrap py-1 rule5 d-none" style="font-size:2.75rem;">0</div>
-                        <div class="row g-0 px-1">
+                        <div class="row g-0 px-2">
                         <div class="col-12 p-0 text-center h3 text-primary text-nowrap py-1"><i class="bi bi-circle pe-2"></i><span id="${playerId}-o" class="o-score">0</span></div>
                         <div class="col-12 p-0 text-center h3 text-danger text-nowrap py-1"><i class="bi bi-x-lg pe-2"></i><span id="${playerId}-x" class="x-score">0</span></div>
                         </div>
-                        <div class="row g-0 px-1 mt-0">
+                        <div class="row g-0 px-2 mt-0">
                             <div class="col p-0 pe-1">
                             <button class="btn btn-primary btn-circle w-100 py-2 increment"><i class="bi bi-circle"></i></button>
                             </div>
@@ -41,7 +56,7 @@ function addPlayer() {
                             <button class="btn btn-danger btn-circle w-100 py-2 decrement"><i class="bi bi-x-lg"></i></button>
                             </div>
                         </div>
-                        <div class="row g-0 px-1 mt-2">
+                        <div class="row g-0 px-2 mt-2">
                             <!--<div class="col-4 px-0 ps-1 text-center">
                                 <input type="checkbox" class="btn-check form-check-input win-player" id="win-player-checkbox-${playerId}">
                                 <label class="btn btn-outline-primary w-100 py-1 d-flex align-items-center justify-content-center" for="win-player-checkbox-${playerId}"><i class="bi bi-trophy"></i></label>
@@ -67,10 +82,7 @@ function addPlayer() {
     const id = $('[name="options-rule"]:checked').attr('id').slice(-1);
     $(`.total-score`).removeClass('d-block').addClass('d-none');
     $(`.rule${id}`).removeClass('d-none').addClass('d-block');
-
-    // 他のイベントリスナーや初期化の処理などもここに記述する
-    rankCalc(id);
-}
+};
 
 $(document).ready(function () {
     // プレイヤー削除ボタンのクリックイベントを追加
@@ -142,11 +154,8 @@ function updateScore(playerId, value, pointSet, isUndo = false) {
         totalScoreElem.text(totalScore);
     };
 
-    const id = $('[name="options-rule"]:checked').attr('id').slice(-1);
-    rankCalc(id);
-
     updateButtons();
-}
+};
 
 $(document).ready(function () {
     updateButtons();
@@ -169,6 +178,10 @@ $(document).ready(function () {
         updateScore(playerId, -1, pointSet);
     });
 
+    $('#rankDisplay').click(function () {
+        toggleRankDisplay();
+    });
+
     $('#undoBtn').click(function () {
         if (actionStack.length > 0) {
             const lastAction = actionStack.pop();
@@ -179,7 +192,6 @@ $(document).ready(function () {
             updateScore(playerId, value, pointSet, true);
         }
     });
-
 
     $('#resetBtn').click(function () {
         $('.o-score, .x-score, .total-score').text('0');
