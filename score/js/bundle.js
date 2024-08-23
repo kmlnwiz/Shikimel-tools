@@ -284,7 +284,6 @@ function rankCalc(id) {
         const elementPlus = document.getElementById(targetId[1]);
         const elementMinus = document.getElementById(targetId[2]);
 
-        // 要素が存在する場合、そのテキストを取得
         if (elementTotal) {
             rankArray.push({
                 playerId: `player${i + 1}`,
