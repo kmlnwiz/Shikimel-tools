@@ -2,7 +2,7 @@ let playerCount = 0;
 let playerCount_label = 0;
 let addBtnDisabled = false;
 let mode = "simple";
-const increment = 1;
+let pointSet = [1, 1];
 let actionStack = []; // 一つの操作履歴を使いまわす
 
 function updateButtons() {
@@ -29,8 +29,8 @@ function addPlayer() {
                         <div id="${playerId}-4" class="text-center h1 fw-bold total-score rule4 d-none" style="font-size:2.75rem;">0</div>
                         <div id="${playerId}-5" class="text-center h1 fw-bold total-score rule5 d-none" style="font-size:2.75rem;">0</div>
                         <div class="row">
-                        <div class="col p-0 pe-1 text-center h2 o-score text-primary">0</div>
-                        <div class="col p-0 ps-1 text-center h2 x-score text-danger">0</div>
+                        <div class="col p-0 pe-1 text-center h3 o-score text-primary">0</div>
+                        <div class="col p-0 ps-1 text-center h3 x-score text-danger">0</div>
                         </div>
                         <div class="row mt-0">
                             <div class="col p-0 pe-1">
@@ -92,7 +92,7 @@ $(document).ready(function () {
     });
 });
 
-function updateScore(playerId, value, isUndo = false) {
+function updateScore(playerId, value, pointSet, isUndo = false) {
     const oScoreElem = $(`#${playerId} .o-score`);
     const xScoreElem = $(`#${playerId} .x-score`);
     let oScore = parseInt(oScoreElem.text());
@@ -102,24 +102,25 @@ function updateScore(playerId, value, isUndo = false) {
     if (!isUndo) {
         actionStack.push({
             playerId,
-            value
+            value,
+            pointSet
         }); // 操作を履歴に追加
     }
 
     // 点数を更新
     if (!isUndo) {
         if (value > 0) {
-            oScore += increment;
+            oScore += pointSet[0];
         } else {
-            xScore += increment;
+            xScore += pointSet[1];
         }
     } else {
         if (value > 0) {
-            oScore -= increment;
+            oScore -= pointSet[0];
         } else {
-            xScore -= increment;
-        }
-    }
+            xScore -= pointSet[1];
+        };
+    };
 
 
     // 表示を更新
@@ -145,12 +146,18 @@ $(document).ready(function () {
 
     $('#playerList').on('click', '.increment', function () {
         const playerId = $(this).closest('.player-card').attr('id');
-        updateScore(playerId, 1);
+        const plusPointSet = Number($('#plusPointSet').val());
+        const minusPointSet = Number($('#minusPointSet').val());
+        pointSet = [plusPointSet, minusPointSet];
+        updateScore(playerId, 1, pointSet);
     });
 
     $('#playerList').on('click', '.decrement', function () {
         const playerId = $(this).closest('.player-card').attr('id');
-        updateScore(playerId, -1);
+        const plusPointSet = Number($('#plusPointSet').val());
+        const minusPointSet = Number($('#minusPointSet').val());
+        pointSet = [plusPointSet, minusPointSet];
+        updateScore(playerId, -1, pointSet);
     });
 
     $('#undoBtn').click(function () {
@@ -159,7 +166,8 @@ $(document).ready(function () {
             const playerId = lastAction.playerId;
             const value = lastAction.value;
             // undoの場合は値が1なら-1、値が-1なら1を渡すように修正
-            updateScore(playerId, value, true);
+            const pointSet = lastAction.pointSet;
+            updateScore(playerId, value, pointSet, true);
         }
     });
 
@@ -203,7 +211,7 @@ $(document).ready(function () {
     document.addEventListener(
         "keydown",
         (e) => {
-            if (e.keyCode === 13) {
+            if (e.shiftKey && e.keyCode === 13) {
                 toggleFullScreen();
             };
         },
@@ -219,6 +227,7 @@ $(document).ready(function () {
                     const playerId = lastAction.playerId;
                     const value = lastAction.value;
                     // undoの場合は値が1なら-1、値が-1なら1を渡すように修正
+                    const pointSet = lastAction.pointSet;
                     updateScore(playerId, value, true);
                 };
             };

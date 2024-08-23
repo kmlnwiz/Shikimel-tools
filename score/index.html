@@ -82,8 +82,25 @@
             <span class="border-bottom h1 d-block my-4 fw-bold touch-none">得点表示</span>
 
             <div class="alert alert-indigo" role="alert">
-                Enterキー：全画面表示<br>
+                Shiftキー＋Enterキー：全画面表示<br>
                 現在は「Simple」「+M / -N」「M by 10」にのみ対応しています。
+            </div>
+
+            <button type="button" class="btn btn-lg btn-outline-success w-100" data-bs-toggle="collapse" data-bs-target="#Simple-option" aria-expanded="false" aria-controls="Simple-option">
+                設定
+            </button>
+            <div class="collapse" id="Simple-option">
+                <div class="row gx-2">
+                    <div class="col-6 mt-2">
+                        <label for="plusPointSet" class="form-label mb-0">1問の正解ポイント</label>
+                        <input type="number" class="form-control" id="plusPointSet" value="1" min="0" max="999">
+                    </div>
+                    <div class="col-6 mt-2">
+                        <label for="minusPointSet" class="form-label mb-0">1問の誤答ポイント</label>
+                        <input type="number" class="form-control" id="minusPointSet" value="1" min="0" max="999">
+                    </div>
+                </div>
+                <button type="button" id="reset" class="btn btn-lg btn-secondary my-2">初期化</button>
             </div>
 
             <div id="contentArea" class="bg-light rounded py-2 px-3 mb-3">
