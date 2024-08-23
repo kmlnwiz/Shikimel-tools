@@ -194,9 +194,12 @@ $(document).ready(function () {
     });
 
     $('#resetBtn').click(function () {
-        $('.o-score, .x-score, .total-score').text('0');
-        actionStack = []; // 操作履歴をクリア
-        updateButtons();
+        $('#confirmationResetModal').modal('show'); // モーダルを表示
+        $('#confirmResetBtn').click(function () {
+            $('.o-score, .x-score, .total-score').text('0');
+            actionStack = []; // 操作履歴をクリア
+            updateButtons();
+        });
     });
 
     $('#toggleMode').change(function () {

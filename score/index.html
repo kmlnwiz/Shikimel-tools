@@ -144,10 +144,30 @@
                             </div>
                             <div class="modal-body">
                                 <div class="h5">本当に<span id="delete-player-id"></span>を削除しますか？</div>
+                                ※操作は取り消せません。
                             </div>
                             <div class="modal-footer p-2">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
                                 <button type="button" class="btn btn-primary" id="confirmDeleteBtn" data-bs-dismiss="modal">削除する</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal fade" id="confirmationResetModal" tabindex="-1" aria-labelledby="confirmationResetModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-dialog-centered">
+                        <div class="modal-content">
+                            <div class="modal-header p-2">
+                                <h5 class="modal-title fw-bold" id="confirmationResetModalLabel">リセットの確認</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="h5">本当にリセットしますか？</div>
+                                ※操作は取り消せません。
+                            </div>
+                            <div class="modal-footer p-2">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">キャンセル</button>
+                                <button type="button" class="btn btn-primary" id="confirmResetBtn" data-bs-dismiss="modal">リセットする</button>
                             </div>
                         </div>
                     </div>
