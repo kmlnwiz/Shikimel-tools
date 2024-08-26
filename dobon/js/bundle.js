@@ -88,7 +88,7 @@ function processFileData(dataList) {
             for (let char of text) {
                 length += (char.match(/[ -~]/)) ? 0.5 : 1;
             }
-            return Math.min(1, 11 / length);
+            return Math.min(1, 12 / length);
         };
 
         function calculateMargin(text) {
@@ -96,20 +96,20 @@ function processFileData(dataList) {
             for (let char of text) {
                 length += (char.match(/[ -~]/)) ? 0.5 : 1;
             }
-            return Math.max(0, (length - 12) * 2.7);
+            return Math.max(0, (length - 12) * 0.2);
         };
 
         const isCorrect = dataList.data[i][2] == '0' ? 'correctOption' : 'incorrectOption';
 
-        html += `<div class="col ${colSize}" style="padding: 0.125rem !important;"><div id="str_a${i}" class="${isCorrect} str-blind blind-2 p-3 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 border-secondary" style="font-size:4.00rem;"><div class="text-nowrap touch-none" style="transform: scaleX(${calculateScale(dataList.data[i][1])}); transform-origin: center; pointer-events:none; margin-left: -${String(dataList.data[i][1]).length > 10 ? calculateMargin(dataList.data[i][1]) : 0}rem;">${dataList.data[i][1]}</div><small class="fw-nomal fs-3 opacity-50 fw-bold position-absolute text-center" style="width:${String(i).length * 2.8}rem; margin-left: -${String(i).length * 1.40}rem !important; margin-top: -7.10rem !important; pointer-events:none;">${i + 1}</small></div>`;
+        html += `<div class="col ${colSize}" style="padding: 0.125rem !important;"><div id="str_a${i}" class="${isCorrect} str-blind blind-2 p-3 px-0 m-0 border bg-white text-dark fw-bold text-center touch-none rounded-3 border-secondary" style="font-size:4.00rem;"><div class="text-nowrap touch-none" style="transform: scaleX(${calculateScale(dataList.data[i][1])}); transform-origin: center; pointer-events:none;  margin-left: -${String(dataList.data[i][1]).length > 10 ? calculateMargin(dataList.data[i][1]) : 0}rem;">${dataList.data[i][1]}</div><small class="fw-nomal fs-3 opacity-50 fw-bold position-absolute text-center" style="width:${String(i).length * 2.8}rem; margin-left: -${String(i).length * 1.40}rem !important; margin-top: -7.10rem !important; pointer-events:none;">${i + 1}</small></div>`;
 
         const bgColor = dataList.data[i][2] == '0' ? 'bg-success' : 'bg-danger';
 
-        html += `<div id="str_b${i}" class="str-blind blind-3 col p-3 m-0 border ${bgColor} text-white fw-bold text-center touch-none rounded-3 d-none border-secondary" style="font-size:4.00rem;"><div class="text-nowrap touch-none" style="transform: scaleX(${calculateScale(dataList.data[i][1])}); transform-origin: center; pointer-events:none;">${dataList.data[i][1]}</div><small class="fw-nomal fs-3 opacity-75 fw-bold position-absolute text-center" style="width:${dataList.data[i][3].length * 2.8}rem; margin-left: -${dataList.data[i][3].length * 1.40}rem !important; margin-top: -1.40rem !important; pointer-events:none;">${dataList.data[i][3] !== "" ? dataList.data[i][3] : "　"}</small><small class="fw-nomal fs-3 opacity-75 fw-bold position-absolute text-center" style="width:3rem; margin-left: -1.45rem !important; margin-top: -7.10rem !important; pointer-events:none;">${i + 1}</small></div></div>`;
+        html += `<div id="str_b${i}" class="str-blind blind-3 col p-3 px-0 m-0 border ${bgColor} text-white fw-bold text-center touch-none rounded-3 d-none border-secondary" style="font-size:4.00rem;"><div class="text-nowrap touch-none" style="transform: scaleX(${calculateScale(dataList.data[i][1])}); transform-origin: center; pointer-events:none;" margin-left: -${String(dataList.data[i][1]).length > 10 ? calculateMargin(dataList.data[i][1]) : 0}rem;">${dataList.data[i][1]}</div><small class="fw-nomal fs-3 opacity-75 fw-bold position-absolute text-center" style="width:${dataList.data[i][3].length * 2.8}rem; margin-left: -${dataList.data[i][3].length * 1.40}rem !important; margin-top: -1.40rem !important; pointer-events:none;">${dataList.data[i][3] !== "" ? dataList.data[i][3] : "　"}</small><small class="fw-nomal fs-3 opacity-75 fw-bold position-absolute text-center" style="width:3rem; margin-left: -1.45rem !important; margin-top: -7.10rem !important; pointer-events:none;">${i + 1}</small></div></div>`;
     };
 
     if ($('#dobonDisplay').prop('checked')) {
-        $('#content-title').html(`${dataList.title} （ドボン数：${incorrectCount}/${dataList.data.length}）`);
+        $('#content-title').html(`${dataList.title} （ドボン数：<span class="text-danger">${incorrectCount}</span>/${dataList.data.length}）`);
     } else {
         $('#content-title').html(`${dataList.title} （選択肢数：${dataList.data.length}）`);
     };
