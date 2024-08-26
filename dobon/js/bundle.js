@@ -96,7 +96,7 @@ function processFileData(dataList) {
             for (let char of text) {
                 length += (char.match(/[ -~]/)) ? 0.5 : 1;
             }
-            return Math.max(0, (length - 12) * 0.2);
+            return Math.max(0, (length - 12) * 0.3);
         };
 
         const isCorrect = dataList.data[i][2] == '0' ? 'correctOption' : 'incorrectOption';
