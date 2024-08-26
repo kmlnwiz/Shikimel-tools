@@ -123,6 +123,10 @@ document.addEventListener(
         if (e.keyCode === 13) {
             toggleFullScreen();
         };
+        if (e.keyCode === 46) {
+            event.preventDefault();
+            $('.btn-close').click();
+        };
     },
     false
 );
