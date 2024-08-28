@@ -88,7 +88,7 @@ function processFileData(dataList) {
             for (let char of text) {
                 length += (char.match(/[ -~]/)) ? 0.5 : 1;
             }
-            return Math.min(1, 12 / length);
+            return Math.min(1, 10 / length);
         };
 
         function calculateMargin(text) {
@@ -96,7 +96,7 @@ function processFileData(dataList) {
             for (let char of text) {
                 length += (char.match(/[ -~]/)) ? 0.5 : 1;
             }
-            return Math.max(0, (length - 12) * 0.5);
+            return Math.max(0, (length - 10) * 0.5);
         };
 
         const isCorrect = dataList.data[i][2] == '0' ? 'correctOption' : 'incorrectOption';
