@@ -39,7 +39,7 @@ function processFileData(dataList) {
     let html = '';
 
     const itemCount = dataList.data.length;
-    let incorrectCount = 0;
+    incorrectCount = 0;
 
     if ($('#setRandom').prop('checked')) {
         shuffleArray(dataList.data);
@@ -51,7 +51,7 @@ function processFileData(dataList) {
         const length = item[1].length;
         return Math.max(max, length);
     }, 0);
-    console.log(maxLength);
+    //console.log(maxLength);
 
     let colSize = 'col-4';
     /*if (maxLength > 11) {
@@ -117,9 +117,12 @@ function processFileData(dataList) {
     };
 
     if ($('#dobonDisplay').prop('checked')) {
-        $('#content-title').html(`${dataList.title} （ドボン数：<span class="text-danger">${incorrectCount}</span>/${dataList.data.length}）`);
+        $('#content-title').html(`
+            <span class="d-inline-block badge dobon-badge_a touch-none text-bg-indigo me-2 align-top px-1" style="width:9.00em;"><span style="pointer-events:none;">ドボン数：${incorrectCount}/${dataList.data.length}</span></span>
+            <span class="d-none badge dobon-badge_b touch-none text-bg-indigo me-2 align-top px-1" style="width:9.00em;"><span class="d-inline-block" style="transform: scaleX(0.90); pointer-events:none;">1/${((dataList.data.length / incorrectCount * 100) / 100).toFixed(1)}の確率</span></span>
+            ${dataList.title}`);
     } else {
-        $('#content-title').html(`${dataList.title} （選択肢数：${dataList.data.length}）`);
+        $('#content-title').html(`<span class="d-inline-block badge touch-none text-bg-indigo me-2 align-top px-1" style="width:9.00em;><span>選択肢数：${dataList.data.length}</span></span>${dataList.title} `);
     };
     $('#content-area').html(html);
 
@@ -173,6 +176,21 @@ $(document).on("click", 'div[id^="str_a"], div[id^="str_b"]', function (e) {
 
     $(targetA).toggleClass('d-none d-block');
     $(targetB).toggleClass('d-none d-block');
+});
+
+$(document).on("click", '.dobon-badge_a , .dobon-badge_b', function (e) {
+    const isA = $('.dobon-badge_a').hasClass("d-inline-block");
+    const targetA = `.dobon-badge_a`;
+    const targetB = `.dobon-badge_b`;
+    console.log(isA);
+
+    if (isA) {
+        $(targetA).removeClass('d-inline-block').addClass('d-none');
+        $(targetB).removeClass('d-none').addClass('d-inline-block');
+    } else {
+        $(targetB).removeClass('d-inline-block').addClass('d-none');
+        $(targetA).removeClass('d-none').addClass('d-inline-block');
+    };
 });
 
 $(document).on("click", '.correctOption', function (e) {
