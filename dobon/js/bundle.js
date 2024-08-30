@@ -126,6 +126,8 @@ function processFileData(dataList) {
     };
     $('#content-area').html(html);
 
+    $('#ContentOverlay').html('<div class="btn btn-lg btn-indigo fs-0 w-75" onClick="hiddenOverlay(true)">問題を表示する</div>');
+    hiddenOverlay(false);
 };
 
 document.addEventListener(
@@ -192,6 +194,16 @@ $(document).on("click", '.dobon-badge_a , .dobon-badge_b', function (e) {
         $(targetA).removeClass('d-none').addClass('d-inline-block');
     };
 });
+
+function hiddenOverlay(boolean) {
+    if (boolean) {
+        $('#ContentOverlay').fadeOut(1000, function () {
+            $('#ContentOverlay').addClass('d-none');
+        });
+    } else {
+        $('#ContentOverlay').removeClass('d-none');
+    };
+};
 
 $(document).on("click", '.correctOption', function (e) {
     const id = e.target.id.replace("str_a", "");

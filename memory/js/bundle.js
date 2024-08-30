@@ -104,6 +104,8 @@ function processFileData(dataList) {
     $('#content-title').html(dataList.title);
     $('#content-area').html(html);
 
+    $('#ContentOverlay').html('<div class="btn btn-lg btn-indigo fs-0 w-75" onClick="hiddenOverlay(true)">問題を表示する</div>');
+    hiddenOverlay();
 };
 
 $(document).on('click', '.memory-card', function () {
@@ -115,6 +117,15 @@ $(document).on('click', '.memory-card', function () {
     $(this).find('.card-body').toggleClass('bg-dark text-opacity');
 });
 
+function hiddenOverlay(boolean) {
+    if (boolean) {
+        $('#ContentOverlay').fadeOut(1000, function () {
+            $('#ContentOverlay').addClass('d-none');
+        });
+    } else {
+        $('#ContentOverlay').removeClass('d-none');
+    };
+};
 
 document.addEventListener(
     "keydown",

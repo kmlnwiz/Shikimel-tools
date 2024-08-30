@@ -117,6 +117,9 @@ function processFileData(dataList) {
     $('#content-title').html(dataList.title);
     $('#content-area').html(html);
 
+    $('#ContentOverlay').html('<div class="btn btn-lg btn-indigo fs-0 w-75" onClick="hiddenOverlay(true)">問題を表示する</div>');
+    hiddenOverlay();
+
     setTimeout(function () {
         drawLines(linesToConnect);
     }, 100); // 100ミリ秒後にdrawLines()関数を実行
@@ -208,6 +211,15 @@ $(document).on('click', '.matching-card[data-pair]', function () {
     //$(`.card-bottom-pair${dataPair}`).find('.card-body').toggleClass('bg-dark text-white');
 });
 
+function hiddenOverlay(boolean) {
+    if (boolean) {
+        $('#ContentOverlay').fadeOut(1000, function () {
+            $('#ContentOverlay').addClass('d-none');
+        });
+    } else {
+        $('#ContentOverlay').removeClass('d-none');
+    };
+};
 
 document.addEventListener(
     "keydown",
