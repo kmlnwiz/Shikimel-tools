@@ -432,3 +432,7 @@ div.osero:hover {
     -2px 2px 0 #000;
   /* 縁取りの影（2px 右上） */
 }
+
+.dobon-badge_a,.dobon-badge_b{
+  cursor: pointer;
+};
