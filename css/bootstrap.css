@@ -9409,6 +9409,10 @@ fieldset:disabled .btn {
   border-right: 0 !important;
 }
 
+.border-end-4 {
+  border-right: 4px var(--bs-border-style) var(--bs-border-color) !important;
+}
+
 .border-bottom {
   border-bottom: var(--bs-border-width) var(--bs-border-style) var(--bs-border-color) !important;
 }
@@ -9423,6 +9427,10 @@ fieldset:disabled .btn {
 
 .border-start-0 {
   border-left: 0 !important;
+}
+
+.border-start-4 {
+  border-left: 4px var(--bs-border-style) var(--bs-border-color) !important;
 }
 
 .border-primary {
