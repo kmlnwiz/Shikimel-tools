@@ -63,13 +63,12 @@ function processFileData(dataList) {
     hiddenOverlay();
 };
 
-$(document).on('click', '.ranking-card', function () {
-    // クリックされたcard-top-pairのdata-pair属性の値を取得
-    const dataPair = $(this).attr('data-pair');
-    //console.log(dataPair);
+$(document).on('click', '.card-body', function () {
+    // クリックされたcard-bodyの親要素（ranking-card）のdata-pair属性の値を取得
+    const dataPair = $(this).closest('.ranking-card').attr('data-pair');
 
-    // クリックされた要素の.card-bodyにクラスを追加または削除する
-    $(this).find('.card-body').toggleClass('bg-dark text-opacity');
+    // クリックされた要素（card-body）にクラスを追加または削除する
+    $(this).toggleClass('bg-dark text-opacity');
 });
 
 function hiddenOverlay(boolean) {

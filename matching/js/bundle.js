@@ -167,8 +167,8 @@ function drawLines(linesToConnect) {
         context.moveTo(startX - parseInt(canvas.style.left), startY - parseInt(canvas.style.top));
         context.lineTo(endX - parseInt(canvas.style.left), endY - parseInt(canvas.style.top));
 
-        context.strokeStyle = 'rgba(255, 0, 0, 0.80)';
-        context.lineWidth = 2;
+        context.strokeStyle = `rgba(255, ${Math.floor(Math.random() * 256)}, ${Math.floor(Math.random() * 256)}, 0.80)`;
+        context.lineWidth = 4;
         context.stroke();
 
         // canvas-area要素にキャンバスを追加
@@ -192,9 +192,9 @@ $(window).on('resize', function () {
     drawLines(linesToConnect); // ウィンドウのリサイズ時に再描写
 });
 
-$(document).on('click', '.matching-card[data-pair]', function () {
+$(document).on('click', '.card-body', function () {
     // クリックされたcard-top-pairのdata-pair属性の値を取得
-    const dataPair = $(this).attr('data-pair');
+    const dataPair = $(this).closest('.matching-card').attr('data-pair');
     //console.log(dataPair);
     // 対応するconnection-line要素を取得
     const line = $(`.line-pair${dataPair}`);
@@ -205,7 +205,7 @@ $(document).on('click', '.matching-card[data-pair]', function () {
     isVisible[dataPair] = !isVisible[dataPair];
 
     // クリックされた要素の.card-bodyと、対応するcard-bottom-pair要素の.card-bodyにクラスを追加または削除する
-    $(this).toggleClass('opacity-15');
+    $(this).closest('.matching-card').toggleClass('opacity-15');
     //$(this).find('.card-body').toggleClass('bg-dark text-white');
     $(`.card-bottom-pair${dataPair}`).toggleClass('opacity-15');
     //$(`.card-bottom-pair${dataPair}`).find('.card-body').toggleClass('bg-dark text-white');
