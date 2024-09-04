@@ -9221,6 +9221,14 @@ fieldset:disabled .btn {
   overflow: hidden !important;
 }
 
+.overflow-x-hidden {
+  overflow-x: hidden !important;
+}
+
+.overflow-y-hidden {
+  overflow-y: hidden !important;
+}
+
 .overflow-visible {
   overflow: visible !important;
 }
