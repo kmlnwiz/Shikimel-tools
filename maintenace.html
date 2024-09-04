@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ja" class="">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="content-language" content="ja">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="robots" content="noindex">
+    <link rel="apple-touch-icon" href="https://suahl.com/wp-content/uploads/2023/01/osaka-min-1024x576.png">
+    <title>ShikimelTools</title>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/bootstrap.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="manifest" href="manifest.webmanifest" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="js/tool.js"></script>
+    <script>
+        document.addEventListener("dblclick", function (e) {
+            e.preventDefault();
+        }, {
+            passive: false
+        });
+    </script>
+    <script>
+        $(function () {
+            //スクロール
+            $('#pagetop').click(function () {
+                //id名#pagetopがクリックされたら、以下の処理を実行
+                $("html,body").animate({
+                    scrollTop: 0
+                }, 0, 200);
+            });
+            $('#pagebottom').click(function () {
+                //id名#pagetopがクリックされたら、以下の処理を実行
+                $("html,body").animate({
+                    scrollTop: $(document).height()
+                }, 0, 200);
+            });
+        });
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+            var h = $(window).height();
+
+            $('#wrap').css('display', 'none');
+            $('#loader-bg ,#loader-light,#loader-dark').height(h).css('display', 'block');
+        });
+
+        $(window).load(function () { //全ての読み込みが完了したら実行
+            $('#loader-bg').delay(200).fadeOut(200);
+            $('#loader-light', '#loader-dark').delay(200).fadeOut(200);
+            $('#wrap').css('display', 'block');
+        });
+    </script>
+    <script>
+        window.addEventListener('load', function () {
+            if ('serviceWorker' in navigator) {
+                navigator.serviceWorker.register("/serviceworker.js")
+                    .then(function (registration) {
+                        //console.log("serviceWorker registed.");
+                    }).catch(function (error) {
+                        console.warn("serviceWorker error.", error);
+                    });
+            }
+        });
+    </script>
+</head>
+
+<body class="d-flex flex-column">
+    <div id="loader-bg">
+        <div id="loader-light">
+            <img src="img/loading-light.gif" width="80" height="80" alt="Now Loading..." />
+            <p>Now Loading...</p>
+        </div>
+    </div>
+    <div id="overlay">
+        <div class="text-center text-indigo" id="overlay-spinner">
+            <div class="spinner-border" style="width: 5rem; height: 5rem;" role="status">
+            </div>
+            <p class="h3 fw-bold">通信中…</p>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-light bg-light touch-none">
+        <a href="index.html" class="top-link navbar-brand mb-0 px-3 h1 py-1">
+            <i class="bi bi-house-door-fill"></i>
+            ShikimelTools
+        </a>
+    </nav>
+    <main class="flex-shrink-0">
+        <div class="container-fluid my-5 mainContent">
+
+            <div class="row">
+
+                <div class="col">
+                    <div class="alert alert-danger" role="alert">
+
+                        <h4 class="alert-heading"><i class="bi bi-exclamation-triangle me-2"></i>Under Maintenance</h4>
+                        <p>This services are unavailable due to system maintenance.</p>
+                        <p>September 09, 2024 Thu 2:00AM – </p>
+                        <hr>
+                        <p class="mb-0">We apologize for your inconvenience.</p>
+                    </div>
+                </div>
+
+            </div>
+
+    </main>
+    <footer class="footer mt-auto py-4 bg-light touch-none">
+        <div class="container-fluid">
+            ©2024 ShikimelTools @ShikimelQuiz
+        </div>
+    </footer>
+</body>
+
+</html>
