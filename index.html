@@ -15,30 +15,6 @@
     <link rel="manifest" href="manifest.webmanifest" />
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="js/tool.js"></script>
-    <script>
-        document.addEventListener("dblclick", function (e) {
-            e.preventDefault();
-        }, {
-            passive: false
-        });
-    </script>
-    <script>
-        $(function () {
-            //スクロール
-            $('#pagetop').click(function () {
-                //id名#pagetopがクリックされたら、以下の処理を実行
-                $("html,body").animate({
-                    scrollTop: 0
-                }, 0, 200);
-            });
-            $('#pagebottom').click(function () {
-                //id名#pagetopがクリックされたら、以下の処理を実行
-                $("html,body").animate({
-                    scrollTop: $(document).height()
-                }, 0, 200);
-            });
-        });
-    </script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script>
         $(function () {
@@ -101,7 +77,7 @@
                         <p>This services are unavailable due to system maintenance.</p>
                         <p>September 09, 2024 Thu 2:00AM – </p>
                         <hr>
-                        <p class="mb-0">We apologize for your inconvenience.</p>
+                        <p class="mb-0">Apologize for your inconvenience.</p>
                     </div>
                 </div>
 
