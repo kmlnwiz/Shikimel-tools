@@ -50,7 +50,7 @@ document.addEventListener("keydown", (e) => {
 }, false);
 
 function toggleFullScreen() {
-    const elem = document.getElementById("Content");
+    const elem = document.getElementById("contentArea");
 
     if (!document.fullscreenElement) {
         elem.requestFullscreen().then(() => {
